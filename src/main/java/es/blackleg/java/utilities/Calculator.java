@@ -47,7 +47,7 @@ public class Calculator {
      * Devuelve el maximo comun divisor entre dos numeros.
      * @param min
      * @param max
-     * @return
+     * @return int
      */
         
     public static int maximoComunDivisor(int min, int max) {
@@ -75,7 +75,7 @@ public class Calculator {
     /**
      * Retorna el factorial de un número.
      * @param num
-     * @return
+     * @return double
      */
     public static double factorial(double num) {
         double fac = 1;
@@ -89,7 +89,7 @@ public class Calculator {
     /**
      * Comprueba si un numero es primo.
      * @param number
-     * @return
+     * @return boolean
      */
     public static boolean isPrimo(long number) {
         long contador = 2;   
@@ -124,7 +124,6 @@ public class Calculator {
             {
                 System.out.println(min);
             }
-            
             min++;
         }   
     }

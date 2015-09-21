@@ -98,7 +98,7 @@ public class RandomMaker {
      * max es el valor maximo de los aleatorios.
      * @param num
      * @param max
-     * @return
+     * @return int[]
      */
     public static int[] toArray(int num, int max) {
         
@@ -120,7 +120,7 @@ public class RandomMaker {
      * @param num
      * @param min
      * @param max
-     * @return
+     * @return int[]
      */
     public static int[] toMatrizEntre (int num, int min, int max) {
         
@@ -145,7 +145,7 @@ public class RandomMaker {
     /**
      * Devuelve una matriz multiplie con numeros aleatorios.
      * @param num
-     * @return
+     * @return int[]
      */
     public static int[][] toMatrizMulti(int num) {
         
@@ -169,7 +169,7 @@ public class RandomMaker {
      * Devuelve una matriz 
      * @param num
      * @param max
-     * @return
+     * @return int[][]
      */
     public static int[][] toMatrizMulti(int num, int max) {
         
@@ -189,7 +189,7 @@ public class RandomMaker {
      * @param num
      * @param min
      * @param max
-     * @return
+     * @return int[][]
      */
     public static int[][] toMatrizMultiEntre (int num, int min, int max) {
         
@@ -213,7 +213,7 @@ public class RandomMaker {
     
     /**
      * Devuelve un boolean aleatorio.
-     * @return
+     * @return boolean
      */
     public static boolean getBoolean() {
         Random aleatorio = new Random();
@@ -222,7 +222,7 @@ public class RandomMaker {
     
     /**
      * Devuelve un int aleatorio. 
-     * @return
+     * @return boolean
      */
     public static int getInt() {
         Random aleatorio = new Random();

@@ -25,7 +25,7 @@ public class Arrays {
      /**
      * Convierte una matriz en una cadena
      * @param matriz
-     * @return
+     * @return String
      */
     public static String toText (String[] matriz) {
         String cadena = "";
@@ -38,7 +38,7 @@ public class Arrays {
     /**
      * Convierte una matriz en una cadena
      * @param matriz
-     * @return
+     * @return String
      */
     public static String toText (int[] matriz) {
         String cadena = "";
@@ -52,7 +52,7 @@ public class Arrays {
     /**
      * Convierte una matriz en una cadena
      * @param matriz
-     * @return
+     * @return String
      */
     public static String toText (char[] matriz) {
         String cadena = "";
