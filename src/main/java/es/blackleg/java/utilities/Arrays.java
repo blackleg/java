@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Blackleg <blackleg@openaliasbox.org>.
+ * Copyright 2015 Blackleg blackleg@openaliasbox.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ package es.blackleg.java.utilities;
 
 /**
  *
- * @author Blackleg <blackleg@openaliasbox.org>
+ * @author Blackleg blackleg@openaliasbox.org
  */
 public class Arrays {
  
