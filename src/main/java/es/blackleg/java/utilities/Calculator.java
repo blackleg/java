@@ -74,7 +74,7 @@ public class Calculator {
     
     /**
      * Retorna el factorial de un número.
-     * @param num
+     * @param num a double
      * @return double
      */
     public static double factorial(double num) {
@@ -88,7 +88,7 @@ public class Calculator {
     
     /**
      * Comprueba si un numero es primo.
-     * @param number
+     * @param number a long number
      * @return boolean
      */
     public static boolean isPrimo(long number) {
@@ -106,8 +106,8 @@ public class Calculator {
     
     /**
      * Muestra en pantalla los primos entre dos numeros.
-     * @param min
-     * @param max
+     * @param min a long number
+     * @param max a long number
      */
     public static void primosEntre(long min, long max) {
         if (min > max) { //Ordenar
