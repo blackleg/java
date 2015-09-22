@@ -130,11 +130,20 @@ public class Calculator {
     
     /**
      * Si un entero es par devuelve true.
-     * @param candidato
-     * @return
+     * @param candidato El numero a comprobar
+     * @return boolean
      */
     public static boolean esPar(int candidato) {  
         return candidato%2 == 0;
+    }
+    
+    /**
+     * Si un entero es impar devuelve true.
+     * @param candidato El numero a comprobar
+     * @return boolean
+     */
+    public static boolean esImpar(int candidato) {  
+        return candidato%2 != 0;
     }
 
     /**
@@ -183,35 +192,28 @@ public class Calculator {
     /**
      * Devuelve una matriz con la serie de fibonacci
      * @param elementos El numero de elementos que componen la serie
-     * @return
+     * @return long[] 
      */
     public static long[] fibonacci (int elementos) {
-        
         long[] matriz = new long[elementos];
-        
         long primero = 1;
         long segundo = 1;
-        
         matriz[0] = primero;
         matriz[1] = segundo;
-        
         for (int i = 2; i < elementos; i++) {
             long siguiente = segundo + primero;
-            
             matriz[i] = siguiente;
-            
             primero = segundo;
             segundo = siguiente; 
-            
         }
   return matriz;
     }
     
     /**
      * Redondea un double a un numero de decimales
-     * @param numero
-     * @param decimales
-     * @return
+     * @param numero El numero a redondear
+     * @param decimales El numero de decimales
+     * @return double redondeado
      */
     public static double redondear(double numero, int decimales) { 
         int enteros = contarEnteros(numero);
@@ -247,7 +249,6 @@ public class Calculator {
             if (i > enteros && i >= tamaño_numero) {
                 temporal[i] = "0".charAt(0);
             }
-            
         } 
         s_numero = Arrays.toText(temporal);
         return Double.valueOf(s_numero);
@@ -255,8 +256,8 @@ public class Calculator {
     
     /**
      * Cuenta la parte entera de un double
-     * @param numero 
-     * @return 
+     * @param numero El numero
+     * @return int La parte entera
      */
     public static int contarEnteros(double numero) {
         int enteros = 0;
