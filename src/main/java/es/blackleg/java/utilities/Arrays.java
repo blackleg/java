@@ -23,26 +23,26 @@ public class Arrays {
  
     
      /**
-     * Convierte una matriz en una cadena
-     * @param matriz
-     * @return String
+     * Convert array in a String 
+     * @param array The array to convert
+     * @return String the converted array
      */
-    public static String toText (String[] matriz) {
+    public static String toText (String[] array) {
         String cadena = "";
-        for (String palabra : matriz) {
+        for (String palabra : array) {
             cadena += palabra + " ";
         }
         return cadena;
     }
     
     /**
-     * Convierte una matriz en una cadena
-     * @param matriz
-     * @return String
+     * Convert array in a String 
+     * @param array The array to convert
+     * @return String the converted array
      */
-    public static String toText (int[] matriz) {
+    public static String toText (int[] array) {
         String cadena = "";
-        for (int numero : matriz) { 
+        for (int numero : array) { 
             cadena += Integer.toString(numero) + " ";
         }
         return cadena;
@@ -50,13 +50,13 @@ public class Arrays {
     
     
     /**
-     * Convierte una matriz en una cadena
-     * @param matriz
-     * @return String
+     * Convert array in a String 
+     * @param array The array to convert
+     * @return String the converted array
      */
-    public static String toText (char[] matriz) {
+    public static String toText (char[] array) {
         String cadena = "";
-        for (char letra : matriz) {  
+        for (char letra : array) {  
             cadena += String.valueOf(letra);
         }
         return cadena;

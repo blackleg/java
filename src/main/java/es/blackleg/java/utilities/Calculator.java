@@ -22,9 +22,9 @@ package es.blackleg.java.utilities;
 public class Calculator {
     
     /**
-     *  Devuelve si un numero entero es Capicua. 
-     * @param numero
-     * @return true es capicua, false no es capicua.
+     * Devuelve si un numero entero es Capicua. 
+     * @param numero A number
+     * @return boolean true es capicua, false no es capicua.
      */
     public static boolean isCapicua(int numero) {
         //Si numero es menor que 10 devolver falso
@@ -45,9 +45,9 @@ public class Calculator {
     
     /**
      * Devuelve el maximo comun divisor entre dos numeros.
-     * @param min
-     * @param max
-     * @return int
+     * @param min First number
+     * @param max Second number
+     * @return int MCD
      */
         
     public static int maximoComunDivisor(int min, int max) {
