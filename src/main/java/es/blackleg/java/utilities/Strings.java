@@ -144,4 +144,8 @@ public class Strings {
         }
          return matriz;
     }
+    
+    public static String cortarPorAtras(String string, int count) {
+        return string.substring(string.length() - count);
+    }
 }
