@@ -58,4 +58,13 @@ public class NumbersTest {
         assertFalse(Numbers.isInt(noNumber));
     }
     
+    @Test
+    public void testRoundDouble() {
+        double initial = 100.12345;
+        double compare = 100.12;
+        double result = Numbers.roundDouble(initial);
+        assertEquals(compare, result, 0.0);
+
+    }
+    
 }

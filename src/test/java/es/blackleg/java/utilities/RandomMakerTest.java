@@ -55,7 +55,6 @@ public class RandomMakerTest {
         int min = 0;
         int max = 1;
         int result = RandomMaker.between(min, max);
-        System.out.println(result);
         assertTrue(result >= min && result <= max);
     }
 
