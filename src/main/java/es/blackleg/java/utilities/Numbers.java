@@ -15,11 +15,15 @@
  */
 package es.blackleg.java.utilities;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author hector
  */
 public class Numbers {
+    
+    private static DecimalFormat decimalFormat = new DecimalFormat(".##");
     
     /**
      *
@@ -44,6 +48,11 @@ public class Numbers {
             }
         }
         return true;
+    }
+    
+    public static double roundDouble(double number) {
+        String doubleString = decimalFormat.format(number);
+        return Double.parseDouble(doubleString);
     }
     
     

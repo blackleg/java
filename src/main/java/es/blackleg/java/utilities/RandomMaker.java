@@ -39,7 +39,7 @@ public class RandomMaker {
         Random aleatorio = new Random();    
         int numale;
         do { 
-            numale = aleatorio.nextInt(max);
+            numale = aleatorio.nextInt(max + 1);
             if (aleatorio.nextBoolean()) { 
                 numale = -numale; 
             }
@@ -55,20 +55,20 @@ public class RandomMaker {
      * @return double
      */
     public static double between(double min, double max) {   
-        //Ordenar
         if (min > max) { 
             double aux = min;
             min = max;      
             max = aux;        
         }
         Random aleatorio = new Random();    
-        int numale; 
+        double numale; 
         do {
-            numale = aleatorio.nextInt();
+            numale = aleatorio.nextDouble();
+            
             if (aleatorio.nextBoolean()) { 
                 numale = -numale;
             }  
-        } while (numale < min && numale > max);
+        } while (numale < min || numale > max);
         return numale;
     }
     
