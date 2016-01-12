@@ -50,7 +50,7 @@ public class Numbers {
         return true;
     }
     
-    public static double roundDouble(double number) {
+    public static double simpleRoundDouble(double number) {
         String doubleString = decimalFormat.format(number);
         return Double.parseDouble(doubleString);
     }
