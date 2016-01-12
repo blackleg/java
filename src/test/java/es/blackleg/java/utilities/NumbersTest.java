@@ -62,7 +62,7 @@ public class NumbersTest {
     public void testRoundDouble() {
         double initial = 100.12345;
         double compare = 100.12;
-        double result = Numbers.roundDouble(initial);
+        double result = Numbers.simpleRoundDouble(initial);
         assertEquals(compare, result, 0.0);
 
     }
