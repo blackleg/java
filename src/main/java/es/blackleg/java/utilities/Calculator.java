@@ -282,4 +282,31 @@ public class Calculator {
         return number < 0;
     }
     
+    /**
+     * Calcula el area de un circulo.
+     * @param radio
+     * @return
+     */
+    public static double areaCirculo (double radio) {
+        return Math.PI * radio * radio;
+    }
+    
+    /**
+     * Calcula el perimetro de un circulo.
+     * @param radio
+     * @return
+     */
+    public static double perimetroCirculo (double radio) {
+        return 2 * Math.PI * radio;
+    }
+    
+    
+    public static double areaCuadrado (double lado) {
+        return Math.pow(lado, 2);
+    }
+    
+    public static double perimetroCuadrado (double lado) {
+        return 4 * lado;
+    }
+    
 }
