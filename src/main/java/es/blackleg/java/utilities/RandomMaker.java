@@ -61,13 +61,9 @@ public class RandomMaker {
             max = aux;        
         }
         Random aleatorio = new Random();    
-        double numale; 
-        System.out.println(min);
-        System.out.println(max);
+        double numale;
         do {
             numale = aleatorio.nextDouble() * (max - min) + min;
-            System.out.println("Numale");
-            System.out.println(numale);
             if (aleatorio.nextBoolean()) { 
                 numale = -numale;
             }  
