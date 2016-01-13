@@ -62,13 +62,16 @@ public class RandomMaker {
         }
         Random aleatorio = new Random();    
         double numale; 
+        System.out.println(min);
+        System.out.println(max);
         do {
-            numale = aleatorio.nextDouble();
-            
+            numale = aleatorio.nextDouble() * (max - min) + min;
+            System.out.println("Numale");
+            System.out.println(numale);
             if (aleatorio.nextBoolean()) { 
                 numale = -numale;
             }  
-        } while (numale < min || numale > max);
+        } while (numale <= min || numale >= max);
         return numale;
     }
     

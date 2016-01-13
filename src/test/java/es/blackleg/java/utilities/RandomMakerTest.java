@@ -67,6 +67,11 @@ public class RandomMakerTest {
         double max = 1.0;
         double result = RandomMaker.between(min, max);
         assertTrue(result >= min && result <= max);
+        
+        min = 5.0;
+        max = 6.0;
+        result = RandomMaker.between(min, max);
+        assertTrue(result >= min && result <= max);
     }
 
 }
