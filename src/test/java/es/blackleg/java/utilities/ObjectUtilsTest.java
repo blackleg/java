@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 hector.
+ * Copyright 2016 hector.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,9 +26,9 @@ import static org.junit.Assert.*;
  *
  * @author hector
  */
-public class NumbersTest {
+public class ObjectUtilsTest {
     
-    public NumbersTest() {
+    public ObjectUtilsTest() {
     }
     
     @BeforeClass
@@ -48,40 +48,23 @@ public class NumbersTest {
     }
 
     /**
-     * Test of isInt method, of class Numbers.
+     * Test of checkTwoObjectsNonNull method, of class ObjectUtils.
      */
     @Test
-    public void testIsInt() {
-        String number = "15";
-        assertTrue(Numbers.isInt(number));
-        String noNumber = "Pepe";
-        assertFalse(Numbers.isInt(noNumber));
-    }
-    
-    @Test
-    public void testRoundDouble() {
-        double initial = 100.12345;
-        double compare = 100.12;
-        double result = Numbers.simpleRoundDouble(initial);
-        assertEquals(compare, result, 0.0);
-
-    }
-    
-    @Test
-    public void testIntFromDouble() {
-        double initial = 100.12;
-        int compare = 100;
-        int result = Numbers.intFromDouble(initial);
-        assertEquals(compare, result);
+    public void testCheckTwoObjectsNonNull() {
+        Object objectOne = null;
+        Object objectTwo = null;
+        assertFalse(ObjectUtils.checkTwoObjectsNonNull(objectOne, objectTwo));
         
-    }
-    
-    @Test
-    public void testIntegerFromDouble() {
-        double initial = 123.123;
-        Integer compare = 123;
-        Integer result = Numbers.integerFromDouble(initial);
-        assertEquals(compare, result);
+        objectOne = new Object();
+        assertFalse(ObjectUtils.checkTwoObjectsNonNull(objectOne, objectTwo));
+        
+        objectTwo = new Object();
+        assertTrue(ObjectUtils.checkTwoObjectsNonNull(objectOne, objectTwo));
+        
+        objectOne = null;
+        assertFalse(ObjectUtils.checkTwoObjectsNonNull(objectOne, objectTwo));
+
     }
     
 }

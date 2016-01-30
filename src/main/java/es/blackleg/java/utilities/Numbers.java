@@ -23,7 +23,10 @@ import java.text.DecimalFormat;
  */
 public class Numbers {
     
-    private static DecimalFormat decimalFormat = new DecimalFormat(".##");
+    private static final DecimalFormat DECIMALFORMAT = new DecimalFormat(".##");
+    
+    public static final double ZERODOUBLE = 0.0; 
+    public static final int ZEROINDEX = 0;
     
     /**
      *
@@ -51,9 +54,24 @@ public class Numbers {
     }
     
     public static double simpleRoundDouble(double number) {
-        String doubleString = decimalFormat.format(number);
+        String doubleString = DECIMALFORMAT.format(number);
         return Double.parseDouble(doubleString);
     }
+    
+    /**
+     * Convierte un double a un int
+     * @param number
+     * @return
+     */
+    public static int intFromDouble(double number){
+        return Double.valueOf(number).intValue();
+    }
+    
+    public static Integer integerFromDouble(double number){
+        return intFromDouble(number);
+    }
+    
+    
     
     
 }
