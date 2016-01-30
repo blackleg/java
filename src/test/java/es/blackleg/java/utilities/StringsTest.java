@@ -59,4 +59,24 @@ public class StringsTest {
         assertEquals(expResult, result);
     }
     
+    @Test
+    public void testCheckIfIsEmptyOrNull() {
+        String test = "Pepe";
+        assertFalse(Strings.checkIfIsEmptyOrNull(test));
+        test = "";
+        assertTrue(Strings.checkIfIsEmptyOrNull(test));
+        test = null;
+        assertTrue(Strings.checkIfIsEmptyOrNull(test));
+    }
+    
+    @Test
+    public void testCheckIfIsNotEmptyOrNull() {
+        String test = "Pepe";
+        assertTrue(Strings.checkIfIsNotEmptyOrNull(test));
+        test = "";
+        assertFalse(Strings.checkIfIsNotEmptyOrNull(test));
+        test = null;
+        assertFalse(Strings.checkIfIsNotEmptyOrNull(test));
+    }
+    
 }
