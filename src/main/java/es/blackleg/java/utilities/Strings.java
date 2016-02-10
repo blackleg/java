@@ -148,4 +148,28 @@ public class Strings {
     public static String cortarPorAtras(String string, int count) {
         return string.substring(string.length() - count);
     }
+    
+        public static String capitalize(String string) {
+        if (Strings.checkIfIsEmptyOrNull(string)) {
+            return string;
+        } else {
+            return string.substring(0, 1).toUpperCase() + string.substring(1).toLowerCase();
+        }
+    }
+    
+    public static String getFirstLetter(String string) {
+        if (Strings.checkIfIsEmptyOrNull(string)) {
+            return string;
+        } else {
+            return string.substring(0, 1);
+        }
+    }
+    
+    public static String getCapitalizeFirstLetter(String string) {
+        if (Strings.checkIfIsEmptyOrNull(string)) {
+            return string;
+        } else {
+            return getFirstLetter(string).toUpperCase();
+        }
+    }
 }

@@ -26,7 +26,8 @@ public class Numbers {
     private static final DecimalFormat DECIMALFORMAT = new DecimalFormat(".##");
     
     public static final double ZERODOUBLE = 0.0; 
-    public static final int ZEROINDEX = 0;
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
     
     /**
      *
