@@ -21,12 +21,17 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
  * @author hector
  */
 public class Dates {
+    
+    public static final long SECONDS_IN_MONTH = 2678400;
+    public static final long SECONDS_IN_WEEK = 604800;
     
     public static Date fromStringWithFormat(String format, String stringFecha) throws ParseException {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat(format);
@@ -77,13 +82,37 @@ public class Dates {
     }
     
     /**
-     * Convierte segundos a minutos
-     * @param segundos
+     * New Date
      * @return
      */
-    public static double segundosToMinutos(double segundos) {
-        return segundos/60;
+    public static Date now() {
+        return new Date();
     }
+    
+    /**
+     * Date from Long
+     * @param longDate
+     * @return
+     */
+    public static Date from(Long longDate) {
+        if (Objects.isNull(longDate)) {
+            return null;
+        } else {
+            return new Date(longDate);
+        }
+    }
+    
+    public static boolean checkTwoDatesIfNotNull(Date fromDate, Date untilDate) {
+        return Objects.nonNull(fromDate) && Objects.nonNull(untilDate);
+    }
+    
+    public static long getSecondsInDateInterval(Date fromDate, Date untilDate) {
+        long fromTimeInterval = fromDate.getTime();
+        long untilTimeInterval = untilDate.getTime();
+        long secondsInTheInterval = untilTimeInterval - fromTimeInterval;
+        return TimeUnit.MILLISECONDS.toSeconds(secondsInTheInterval);
+    }
+    
     
     
     
