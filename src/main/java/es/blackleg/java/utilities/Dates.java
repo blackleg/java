@@ -113,7 +113,9 @@ public class Dates {
         return TimeUnit.MILLISECONDS.toSeconds(secondsInTheInterval);
     }
     
-    
+    public static String getMilisTimeString(Date date) {
+        return Long.toString(date.getTime());
+    }
     
     
 }
