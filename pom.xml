@@ -52,7 +52,7 @@
 	<developerConnection>scm:git:git@github.com:blackleg/java-utilities.git</developerConnection>
 	<url>https://github.com/blackleg/java-utilities</url>
       <tag>HEAD</tag>
-  </scm>
+    </scm>
     <build>
 	<plugins>
                 <plugin>
