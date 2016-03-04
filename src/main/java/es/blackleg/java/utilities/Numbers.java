@@ -28,6 +28,7 @@ public class Numbers {
     public static final double ZERODOUBLE = 0.0; 
     public static final int ZERO = 0;
     public static final int ONE = 1;
+    public static final int MINUSONE = -1;
     
     /**
      *

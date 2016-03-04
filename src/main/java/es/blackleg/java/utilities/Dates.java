@@ -113,9 +113,119 @@ public class Dates {
         return TimeUnit.MILLISECONDS.toSeconds(secondsInTheInterval);
     }
     
+    public static long getDaysInTheInterval(long interval) {
+        return TimeUnit.SECONDS.toDays(interval);
+    }
+    
+    public static long getWeeksInTheInterval(long interval) {
+        return interval/SECONDS_IN_WEEK;
+    }
+    
+    public static long getMonthsInTheInterval(long interval) {
+        return interval/SECONDS_IN_MONTH;
+    }
+    
+    public static long secondsInMonths(long months) {
+        return months*SECONDS_IN_MONTH;
+    }
+    
+    public static long secondsInWeeks(long weeks) {
+        return weeks*SECONDS_IN_WEEK;
+    }
+    
+    public static long secondsInDays(long days) {
+        return TimeUnit.DAYS.toSeconds(days);
+    }
+    
+    public static long getMinutesInTheInterval(long interval) {
+        return TimeUnit.SECONDS.toMinutes(interval);
+    }
+    
+    public static long secondsFromMilis(long miliseconds) {
+        return TimeUnit.MILLISECONDS.toSeconds(miliseconds);
+    }
+    
     public static String getMilisTimeString(Date date) {
         return Long.toString(date.getTime());
     }
     
+    /**
+     * Check if date interval collision another date interval
+     * @param firstDateInInterval
+     * @param secondDateInInterval
+     * @param firsrDateInIntervalToCompare
+     * @param secondDateInIntervalToCompare
+     * @return
+     */
+    public static boolean checkIfDatesIntervalCollisionAnotherInterval(Date firstDateInInterval, Date secondDateInInterval, Date firsrDateInIntervalToCompare, Date secondDateInIntervalToCompare) {
+        if (Objects.nonNull(firstDateInInterval) && Objects.nonNull(secondDateInInterval) && Objects.nonNull(firsrDateInIntervalToCompare) && Objects.nonNull(secondDateInIntervalToCompare)) {
+            return beforeOrEquals(secondDateInIntervalToCompare, firstDateInInterval) && afterOrEquals(firsrDateInIntervalToCompare, secondDateInInterval);
+        } else {
+            return false;
+        }
+    }
     
+    public static boolean afterOrEquals(Date dateToCompare, Date date) {
+        if (checkTwoDatesIfNotNull(dateToCompare, date)) {
+            return dateToCompare.getTime() <= date.getTime();
+        } else {
+            return false;
+        }
+    }
+    
+    public static boolean beforeOrEquals(Date dateToCompare, Date date) {
+        if (checkTwoDatesIfNotNull(dateToCompare, date)) {
+            return dateToCompare.getTime() >= date.getTime();
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Check if Date Interval is inside another interval
+     * @param firstDateInterval
+     * @param secondDateInterval
+     * @param firsrDateIntervalToCompare
+     * @param secondDateIntervalToCompare
+     * @return
+     */
+    public static boolean checkIfDatesIntervalIsInsideAnotherInterval(Date firstDateInterval, Date secondDateInterval, Date firsrDateIntervalToCompare, Date secondDateIntervalToCompare) {
+        if (Objects.nonNull(firstDateInterval) && Objects.nonNull(secondDateInterval) && Objects.nonNull(firsrDateIntervalToCompare) && Objects.nonNull(secondDateIntervalToCompare)) {
+            return checkIfDateIsBetweenDates(firstDateInterval, firsrDateIntervalToCompare, secondDateIntervalToCompare) && checkIfDateIsBetweenDates(secondDateInterval, firsrDateIntervalToCompare, secondDateIntervalToCompare);
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Check if date interval contains another date interval
+     * @param firstDate
+     * @param secondDate
+     * @param firsrDateInIntervalToCompare
+     * @param secondDateInIntervalToCompare
+     * @return
+     */
+    public static boolean checkIfDatesIntervalContainsAnotherInterval(Date firstDate, Date secondDate, Date firsrDateInIntervalToCompare, Date secondDateInIntervalToCompare) {
+        if (Objects.nonNull(firstDate) && Objects.nonNull(secondDate) && Objects.nonNull(firsrDateInIntervalToCompare) && Objects.nonNull(secondDateInIntervalToCompare)) {
+            return beforeOrEquals(firsrDateInIntervalToCompare, firstDate) && afterOrEquals(secondDateInIntervalToCompare, secondDate);
+        } else {
+            return false;
+        }
+    }
+    
+    /**
+     * Check if Date is between two Dates
+     * @param date
+     * @param firstDate
+     * @param secondDate
+     * @return
+     */
+    public static boolean checkIfDateIsBetweenDates(Date date, Date firstDate, Date secondDate) {
+        if (Objects.nonNull(date) && Objects.nonNull(firstDate) && Objects.nonNull(secondDate)) {
+            return afterOrEquals(firstDate, date) && beforeOrEquals(secondDate, date);
+        } else {
+            return false;
+        }
+    }
+
 }

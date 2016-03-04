@@ -23,6 +23,8 @@ import java.util.Objects;
  */
 public class Strings {
     
+    public static final String EMPTY = "";
+    
     /**
      * Check if string is null or empty
      * @param string The string
@@ -170,6 +172,14 @@ public class Strings {
             return string;
         } else {
             return getFirstLetter(string).toUpperCase();
+        }
+    }
+    
+    public static String removeStringInString(String string, String remove) {
+        if (Strings.checkIfIsEmptyOrNull(string)) {
+            return string;
+        } else {
+            return string.replaceAll(remove, EMPTY);
         }
     }
 }

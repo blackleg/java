@@ -23,13 +23,13 @@ import java.util.regex.Pattern;
  *
  * @author Blackleg blackleg@openaliasbox.org
  */
-public class Validator {
+public class RegexValidator {
     
     //Patterns
-    private static final String dni = "(\\d{8})([-]?)([A-Z]{1})";
-    private static final String noString = "[a-zA-Z]*";
-    private static final String onlyNumber = "[0-9]*";
-    private static final String containsNumber = ".*\\d.*";
+    public static final String DNIREGEX = "(\\d{8})([-]?)([A-Z]{1})";
+    public static final String NOSTRINGREGEX = "[a-zA-Z]*";
+    public static final String ONLYNUMBERREGEX = "[0-9]*";
+    public static final String CONTAINSNUMBERREGEX = ".*\\d.*";
     
     /**
      * [ES] Comprueba un string con el patron
@@ -54,19 +54,19 @@ public class Validator {
 
 
     public static boolean checkStringNoNumber(String string) throws StringEmptyException {
-        return checkStringWithPattern(string, noString);
+        return checkStringWithPattern(string, NOSTRINGREGEX);
     }
 
     public static boolean checkStringOnlyNumber(String string) throws StringEmptyException {
-        return checkStringWithPattern(string, onlyNumber);
+        return checkStringWithPattern(string, ONLYNUMBERREGEX);
     }
 
     public static boolean checkStringIsDni(String string) throws StringEmptyException {
-        return checkStringWithPattern(string, dni);
+        return checkStringWithPattern(string, DNIREGEX);
     }
     
     public static boolean checkIfStringContainsNumber(String string) throws StringEmptyException {
-        return checkStringWithPattern(string, containsNumber);
+        return checkStringWithPattern(string, CONTAINSNUMBERREGEX);
     }
     
 }
