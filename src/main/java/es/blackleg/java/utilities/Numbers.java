@@ -69,6 +69,11 @@ public class Numbers {
         return Double.valueOf(number).intValue();
     }
     
+    /**
+     *
+     * @param number
+     * @return
+     */
     public static Integer integerFromDouble(double number){
         return intFromDouble(number);
     }
