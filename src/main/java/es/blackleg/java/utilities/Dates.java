@@ -18,6 +18,9 @@ package es.blackleg.java.utilities;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -226,6 +229,32 @@ public class Dates {
         } else {
             return false;
         }
+    }
+    
+    /**
+     * Calls {@link #toLocalDate(Date, ZoneId)} with the system default time zone.
+     * @param date
+     * @return 
+     */
+    public static LocalDate toLocalDate(java.util.Date date) {
+        return toLocalDate(date, ZoneId.systemDefault());
+    }
+    
+    /**
+     * Creates {@link LocalDate} from {@code java.util.Date} or it's subclasses. Null-safe.
+     * @param date
+     * @param zone
+     * @return 
+     */
+    public static LocalDate toLocalDate(java.util.Date date, ZoneId zone) {
+        if (Objects.isNull(date)) {
+            return null;
+        }
+        if (date instanceof java.sql.Date) {
+            return ((java.sql.Date) date).toLocalDate();
+        } else {
+            return Instant.ofEpochMilli(date.getTime()).atZone(zone).toLocalDate();
+        }   
     }
 
 }

@@ -78,6 +78,29 @@ public class Numbers {
         return intFromDouble(number);
     }
     
+    public static double doubleFromInt(int number) {
+        return Integer.valueOf(number).doubleValue();
+    }
+    
+    /**
+     * Round to the next multiple
+     * @param number
+     * @param multiple
+     * @return
+     */
+    public static int roundToMultiple(double number, int multiple){
+        return Math.toIntExact(Math.round(number/multiple) * multiple);
+    }
+    
+    /**
+     * Round to the next multiple
+     * @param number
+     * @param multiple
+     * @return
+     */
+    public static int roundToMultiple(int number, int multiple){
+        return roundToMultiple(doubleFromInt(number), multiple);
+    }
     
     
     

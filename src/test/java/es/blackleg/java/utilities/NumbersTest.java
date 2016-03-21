@@ -84,4 +84,19 @@ public class NumbersTest {
         assertEquals(compare, result);
     }
     
+    @Test
+    public void testRoundToMultiple() {
+        int initial = 123;
+        int compare = 125;
+        int multiple = 5;
+        int result = Numbers.roundToMultiple(initial, multiple);
+        assertEquals(compare, result);
+        
+        initial = 4;
+        compare = 5;
+        multiple = 5;
+        result = Numbers.roundToMultiple(initial, multiple);
+        assertEquals(compare, result);
+    }
+    
 }
