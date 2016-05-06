@@ -25,6 +25,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -81,6 +82,12 @@ public class Dates {
     
     public static String toStringWithFormat(String format, Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat(format);
+        return formatter.format(date);
+    }
+    
+    public static String toStringWithFormat(String format, Date date, TimeZone timeZone) {
+        SimpleDateFormat formatter = new SimpleDateFormat(format);
+        formatter.setTimeZone(timeZone);
         return formatter.format(date);
     }
     

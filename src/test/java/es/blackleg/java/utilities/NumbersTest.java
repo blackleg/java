@@ -99,4 +99,12 @@ public class NumbersTest {
         assertEquals(compare, result);
     }
     
+    @Test
+    public void testGetCurrencyString() {
+       double currency = 123.456;
+       String currencyString = Numbers.getCurrencyString(Locales.spanish(), currency);
+       assertNotNull(currencyString);
+        assertEquals("123,46 €", currencyString);
+    }
+    
 }

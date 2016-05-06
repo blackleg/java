@@ -16,6 +16,8 @@
 package es.blackleg.java.utilities;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  *
@@ -23,7 +25,7 @@ import java.text.DecimalFormat;
  */
 public class Numbers {
     
-    private static final DecimalFormat DECIMALFORMAT = new DecimalFormat(".##");
+    private static final String DOUBLEFORMAT = ".##";
     
     public static final double ZERODOUBLE = 0.0; 
     public static final int ZERO = 0;
@@ -55,9 +57,59 @@ public class Numbers {
         return true;
     }
     
+    
+    public static DecimalFormat getDecimalFormat() {
+        return new DecimalFormat();
+    }
+    
+    public static DecimalFormat getDecimalFormat(String format) {
+        return new DecimalFormat(format);
+    }
+    
+    /**
+     * Simple round double to string
+     * @param number A double number
+     * @return Rounded double string
+     */
+    public static String simpleRoundDoubleToString(double number) {
+        return getDecimalFormat(DOUBLEFORMAT).format(number);
+    }
+    
+    /**
+     * Simple round double
+     * @param number A double number
+     * @return Rounded double
+     */
     public static double simpleRoundDouble(double number) {
-        String doubleString = DECIMALFORMAT.format(number);
-        return Double.parseDouble(doubleString);
+        return Double.parseDouble(simpleRoundDoubleToString(number));
+    }
+    
+    public static NumberFormat getCurrencyFormat() {
+        return NumberFormat.getCurrencyInstance();
+    }
+    
+    public static NumberFormat getCurrencyFormat(Locale locale) {
+        return NumberFormat.getCurrencyInstance(locale);
+    }
+    
+    /**
+     * Transform double to currency locale
+     * @param locale The currency locale
+     * @param number The number to format
+     * @return String
+     */
+    public static String getCurrencyString(Locale locale, double number) {
+        return getCurrencyFormat(locale).format(number);
+    }
+    
+    /**
+     * Transform long to currency locale
+     * @param locale The currency locale
+     * @param number The number to format
+     * @return String
+     */
+    public static String getCurrencyString(Locale locale, long number) {
+        return getCurrencyFormat(locale).format(number);
     }
     
     /**
