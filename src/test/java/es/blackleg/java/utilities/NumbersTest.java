@@ -64,8 +64,17 @@ public class NumbersTest {
         double compare = 100.12;
         double result = Numbers.simpleRoundDouble(initial);
         assertEquals(compare, result, 0.0);
-
     }
+    
+    
+    @Test
+    public void testRoundDoubleString() {
+        double initial = 100.12345;
+        String compare = "100.12";
+        String result = Numbers.simpleRoundDoubleToString(initial);
+        assertEquals(compare, result);
+    }
+    
     
     @Test
     public void testIntFromDouble() {

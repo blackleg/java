@@ -15,6 +15,8 @@
  */
 package es.blackleg.java.utilities;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -25,12 +27,12 @@ import java.util.Locale;
  */
 public class Numbers {
     
-    private static final String DOUBLEFORMAT = ".##";
-    
     public static final double ZERODOUBLE = 0.0; 
     public static final int ZERO = 0;
     public static final int ONE = 1;
     public static final int MINUSONE = -1;
+    public static final int TWO = 2;
+    public static final int MINUSTWO = -2;
     
     /**
      *
@@ -66,13 +68,26 @@ public class Numbers {
         return new DecimalFormat(format);
     }
     
+    
+    
     /**
      * Simple round double to string
      * @param number A double number
      * @return Rounded double string
      */
     public static String simpleRoundDoubleToString(double number) {
-        return getDecimalFormat(DOUBLEFORMAT).format(number);
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+        numberFormat.setMaximumFractionDigits(TWO);
+        numberFormat.setMinimumFractionDigits(TWO);
+        return numberFormat.format(number);
+    }
+    
+    public static BigDecimal getBitDecimal(double number) {
+        return new BigDecimal(number);
+    }
+    
+    public static BigDecimal getBigDecimalWithScale(double number, int scale) {
+        return getBitDecimal(number).setScale(scale, RoundingMode.HALF_UP);
     }
     
     /**
@@ -81,7 +96,7 @@ public class Numbers {
      * @return Rounded double
      */
     public static double simpleRoundDouble(double number) {
-        return Double.parseDouble(simpleRoundDoubleToString(number));
+        return getBigDecimalWithScale(number, TWO).doubleValue();
     }
     
     public static NumberFormat getCurrencyFormat() {
