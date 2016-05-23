@@ -17,6 +17,7 @@ package es.blackleg.java.utilities;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -243,6 +244,22 @@ public class DatesTest {
         firstDateInInterval = dateFormat.parse("05-01-2016");
         secondDateInInterval = dateFormat.parse("10-01-2016");
         assertTrue(Dates.checkIfDatesIntervalContainsAnotherInterval(firstDateInInterval, secondDateInInterval, firstDateInIntervalToCompare, secondDateInIntervalToCompare));
+    }
+    
+    @Test
+    public void testGetCalendarWithDate() {
+        Date date = Dates.now();
+        Calendar calendar = Dates.getCalendar(date);
+        assertNotNull(calendar);
+        assertEquals(date.getTime(), calendar.getTime().getTime());
+    }
+    
+    @Test
+    public void testAddSeconds() {
+        Date date = Dates.now();
+        int seconds = 60;
+        Date addedDate = Dates.addSeconds(date, seconds);
+        assertNotNull(addedDate);
     }
 
     

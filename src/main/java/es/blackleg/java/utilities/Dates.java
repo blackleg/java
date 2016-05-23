@@ -263,5 +263,28 @@ public class Dates {
             return Instant.ofEpochMilli(date.getTime()).atZone(zone).toLocalDate();
         }   
     }
+    
+    /**
+     * Get calendar with date
+     * @param time Time
+     * @return Calendar
+     */
+    public static Calendar getCalendar(Date time) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(time);
+        return calendar;
+    }
+    
+    /**
+     * Add seconds to date
+     * @param time Date
+     * @param seconds The number of seconds
+     * @return Date
+     */
+    public static Date addSeconds(Date time, int seconds) {
+        Calendar calendar = getCalendar(time);
+        calendar.add(Calendar.SECOND, seconds);
+        return calendar.getTime();
+    }
 
 }
