@@ -159,11 +159,8 @@ public class Dates {
         return Math.round(SECONDS_IN_WEEK*weeks);
     }
     
-    public static long removeWeeksFromSeconds(long seconds, long months) {
-        System.out.println("Seconds: " + seconds);
-        long secondsToRemove = getSecondsFromMonths(months);
-        System.out.println("Seconds to remove: " + secondsToRemove);
-        return removeSeconds(seconds, secondsToRemove);
+    public static long removeWeeksFromSeconds(long seconds, long weeks) {
+        return removeSeconds(seconds, getSecondsFromWeeks(weeks));
     }
     
     public static long getMonthsFromSeconds(long seconds) {
@@ -175,8 +172,7 @@ public class Dates {
     }
     
     public static long removeMonthsFromSeconds(long seconds, long months) {
-        long secondsToRemove = getSecondsFromMonths(months);
-        return removeSeconds(seconds, secondsToRemove);
+        return removeSeconds(seconds, getSecondsFromMonths(months));
     }
     
     private static long removeSeconds(long seconds, long secondsToRemove) {

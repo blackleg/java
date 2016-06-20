@@ -262,6 +262,29 @@ public class DatesTest {
     }
     
     @Test
+    public void testRemoveWeeksFromSeconds() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm");
+        Date fromDate = dateFormat.parse("01-01-2016 00:00");
+        Date untilDate= dateFormat.parse("08-01-2016 00:00");
+        long secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
+        long weeks = Dates.getWeeksFromSeconds(secondsInterval);
+        long expected = 1;
+        assertEquals(expected, weeks);
+        long removedSeconds = Dates.removeWeeksFromSeconds(secondsInterval, weeks);
+        expected = 0;
+        assertEquals(expected, removedSeconds);     
+        fromDate = dateFormat.parse("01-01-2016 00:00");
+        untilDate= dateFormat.parse("15-01-2016 00:01");
+        secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
+        weeks = Dates.getWeeksFromSeconds(secondsInterval);
+        expected = 2;
+        assertEquals(expected, weeks);
+        removedSeconds = Dates.removeWeeksFromSeconds(secondsInterval, weeks);
+        expected = 60;
+        assertEquals(expected, removedSeconds);
+    }
+    
+    @Test
     public void testGetSecondsFromDays() {
         long days = 1;
         long seconds = Dates.getSecondsFromDays(days);
