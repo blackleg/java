@@ -128,23 +128,6 @@ public class Calculator {
         }   
     }
     
-    /**
-     * Si un entero es par devuelve true.
-     * @param candidato El numero a comprobar
-     * @return boolean
-     */
-    public static boolean esPar(int candidato) {  
-        return candidato%2 == 0;
-    }
-    
-    /**
-     * Si un entero es impar devuelve true.
-     * @param candidato El numero a comprobar
-     * @return boolean
-     */
-    public static boolean esImpar(int candidato) {  
-        return candidato%2 != 0;
-    }
 
     /**
      * Resuelve una ecuacion de segundo grado
@@ -216,7 +199,7 @@ public class Calculator {
      * @return double redondeado
      */
     public static double redondear(double numero, int decimales) { 
-        int enteros = contarEnteros(numero);
+        int enteros = Numbers.contarEnteros(numero);
         String s_numero = String.valueOf(numero);
         char[] temporal = new char[enteros + decimales + 1];
         char[] numeros = s_numero.toCharArray();
@@ -254,33 +237,7 @@ public class Calculator {
         return Double.valueOf(s_numero);
     }
     
-    /**
-     * Cuenta la parte entera de un double
-     * @param numero El numero
-     * @return int La parte entera
-     */
-    public static int contarEnteros(double numero) {
-        int enteros = 0;
-        String s_numero = String.valueOf(numero);
-        char[] numeros = s_numero.toCharArray();
-        for (char c : numeros) {
-            if (c == ".".charAt(0) ) {
-                return enteros;
-                
-            } else {
-                enteros++;
-            }
-        }
-        return enteros;
-    }
     
-    public static boolean checkIfIsNegative(int number) {
-        return number < 0;
-    }
-    
-    public static boolean checkIfIsNegative(double number) {
-        return number < 0;
-    }
     
     /**
      * Calcula el area de un circulo.

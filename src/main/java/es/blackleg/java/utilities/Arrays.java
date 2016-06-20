@@ -177,7 +177,7 @@ public class Arrays {
     public static int countPares(int[] array) {
         int pares = 0;
         for (int numero : array) {
-            if (Calculator.esPar(numero)) {
+            if (Numbers.isPar(numero)) {
                 pares++;
             }
         }   
@@ -193,7 +193,7 @@ public class Arrays {
     public static int contadorImpares(int[] array) {
         int impares = 0;
         for (int numero : array) {
-            if (Calculator.esImpar(numero)) {
+            if (Numbers.isImpar(numero)) {
                 impares++;
             }
         }   
@@ -211,7 +211,7 @@ public class Arrays {
         for (int i = 0; i < array.length; i++) {
             int numero = array[i];
             if (pares) {
-                if (Calculator.esImpar(numero)) {
+                if (Numbers.isImpar(numero)) {
                     if(numero + 1 > 99) {
                         matrizconvertidos[i] = numero - 1;
                     } else {
@@ -221,7 +221,7 @@ public class Arrays {
                     matrizconvertidos[i] = numero;
                 }
             } else {
-                if (Calculator.esPar(numero)) {
+                if (Numbers.isPar(numero)) {
                     if(numero + 1 > 99) {
                         matrizconvertidos[i] = numero - 1;
                     } else {

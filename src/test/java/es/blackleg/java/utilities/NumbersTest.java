@@ -115,5 +115,4 @@ public class NumbersTest {
        assertNotNull(currencyString);
         assertEquals("123,46 €", currencyString);
     }
-    
 }

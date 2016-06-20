@@ -34,8 +34,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class Dates {
     
-    public static final long SECONDS_IN_MONTH = 2678400;
+    public static final long SECONDS_IN_MONTH = 2592000;
     public static final long SECONDS_IN_WEEK = 604800;
+    public static final long SECONDS_IN_DAY = 86400;
     
     public static Date fromStringWithFormat(String format, String stringFecha) throws ParseException {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat(format);
@@ -116,43 +117,83 @@ public class Dates {
         return Objects.nonNull(fromDate) && Objects.nonNull(untilDate);
     }
     
+    /**
+     * Get seconds from milliseconds
+     * @param milliseconds Milliseconds value
+     * @return long Seconds
+     */
+    public static long getSecondsFromMillis(long milliseconds) {
+        return TimeUnit.MILLISECONDS.toSeconds(milliseconds);
+    }
+    
+    public static long getDateInterval(Date fromDate, Date untilDate) {
+        return getDateInterval(fromDate.getTime(), untilDate.getTime());
+    }
+    
+    public static long getDateInterval(long fromDate, long untilDate) {
+        return untilDate - fromDate;
+    }
+    
     public static long getSecondsInDateInterval(Date fromDate, Date untilDate) {
-        long fromTimeInterval = fromDate.getTime();
-        long untilTimeInterval = untilDate.getTime();
-        long secondsInTheInterval = untilTimeInterval - fromTimeInterval;
-        return TimeUnit.MILLISECONDS.toSeconds(secondsInTheInterval);
+        return getSecondsFromMillis(getDateInterval(fromDate, untilDate));
     }
     
-    public static long getDaysInTheInterval(long interval) {
-        return TimeUnit.SECONDS.toDays(interval);
+    public static long getDaysFromSeconds(long seconds) {
+        return TimeUnit.SECONDS.toDays(seconds);
     }
     
-    public static long getWeeksInTheInterval(long interval) {
-        return interval/SECONDS_IN_WEEK;
-    }
-    
-    public static long getMonthsInTheInterval(long interval) {
-        return interval/SECONDS_IN_MONTH;
-    }
-    
-    public static long secondsInMonths(long months) {
-        return months*SECONDS_IN_MONTH;
-    }
-    
-    public static long secondsInWeeks(long weeks) {
-        return weeks*SECONDS_IN_WEEK;
-    }
-    
-    public static long secondsInDays(long days) {
+    /**
+     * Get seconds fromDays
+     * @param days
+     * @return
+     */
+    public static long getSecondsFromDays(long days) {
         return TimeUnit.DAYS.toSeconds(days);
     }
     
-    public static long getMinutesInTheInterval(long interval) {
-        return TimeUnit.SECONDS.toMinutes(interval);
+    public static long getWeeksFromSeconds(long seconds) {
+        return Math.round(seconds/SECONDS_IN_WEEK);
     }
     
-    public static long secondsFromMilis(long miliseconds) {
-        return TimeUnit.MILLISECONDS.toSeconds(miliseconds);
+    public static long getSecondsFromWeeks(long weeks) {
+        return Math.round(SECONDS_IN_WEEK*weeks);
+    }
+    
+    public static long removeWeeksFromSeconds(long seconds, long months) {
+        System.out.println("Seconds: " + seconds);
+        long secondsToRemove = getSecondsFromMonths(months);
+        System.out.println("Seconds to remove: " + secondsToRemove);
+        return removeSeconds(seconds, secondsToRemove);
+    }
+    
+    public static long getMonthsFromSeconds(long seconds) {
+        return Math.round(seconds/SECONDS_IN_MONTH);
+    }
+    
+    public static long getSecondsFromMonths(long months) {
+        return Math.round(SECONDS_IN_MONTH*months);
+    }
+    
+    public static long removeMonthsFromSeconds(long seconds, long months) {
+        long secondsToRemove = getSecondsFromMonths(months);
+        return removeSeconds(seconds, secondsToRemove);
+    }
+    
+    private static long removeSeconds(long seconds, long secondsToRemove) {
+        if (seconds >= secondsToRemove) {
+            return seconds - secondsToRemove;
+        } else {
+            return seconds;
+        }
+    }
+
+    /**
+     * Get minutes from seconds
+     * @param seconds
+     * @return
+     */
+    public static long getMinutesFromSeconds(long seconds) {
+        return TimeUnit.SECONDS.toMinutes(seconds);
     }
     
     public static String getMilisTimeString(Date date) {

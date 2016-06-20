@@ -168,6 +168,61 @@ public class Numbers {
     public static int roundToMultiple(int number, int multiple){
         return roundToMultiple(doubleFromInt(number), multiple);
     }
+
+    public static boolean isNegative(int number) {
+        return number < 0;
+    }
+
+    public static boolean isNegative(double number) {
+        return number < 0;
+    }
+
+    /**
+     * Cuenta la parte entera de un double
+     * @param numero El numero
+     * @return int La parte entera
+     */
+    public static int contarEnteros(double numero) {
+        int enteros = 0;
+        String s_numero = String.valueOf(numero);
+        char[] numeros = s_numero.toCharArray();
+        for (char c : numeros) {
+            if (c == ".".charAt(0)) {
+                return enteros;
+            } else {
+                enteros++;
+            }
+        }
+        return enteros;
+    }
+
+    /**
+     * Si un entero es par devuelve true.
+     * @param candidato El numero a comprobar
+     * @return boolean
+     */
+    public static boolean isPar(int candidato) {
+        return candidato % 2 == 0;
+    }
+
+    /**
+     * Si un entero es impar devuelve true.
+     * @param candidato El numero a comprobar
+     * @return boolean
+     */
+    public static boolean isImpar(int candidato) {
+        return candidato % 2 != 0;
+    }
+    
+    /**
+     * Return if number is higher than number to compare
+     * @param numberToCompare
+     * @param number
+     * @return True if number is higher than number to compare
+     */
+    public static boolean isHigherThan(Double numberToCompare, Double number) {
+        return number > numberToCompare;
+    }
     
     
     
