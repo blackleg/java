@@ -285,6 +285,62 @@ public class DatesTest {
     }
     
     @Test
+    public void testRemoveDaysFromSeconds() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm");
+        Date fromDate = dateFormat.parse("01-01-2016 00:00");
+        Date untilDate= dateFormat.parse("02-01-2016 00:00");
+        long secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
+        long days = Dates.getDaysFromSeconds(secondsInterval);
+        long expected = 1;
+        assertEquals(expected, days);
+        long removedSeconds = Dates.removeDaysFromSeconds(secondsInterval, days);
+        expected = 0;
+        assertEquals(expected, removedSeconds);     
+        fromDate = dateFormat.parse("01-01-2016 00:00");
+        untilDate= dateFormat.parse("05-01-2016 00:01");
+        secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
+        days = Dates.getDaysFromSeconds(secondsInterval);
+        expected = 4;
+        assertEquals(expected, days);
+        removedSeconds = Dates.removeDaysFromSeconds(secondsInterval, days);
+        expected = 60;
+        assertEquals(expected, removedSeconds);
+    }
+    
+    @Test
+    public void testRemoveFromSeconds() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm");
+        Date fromDate = dateFormat.parse("01-01-2016 00:00");
+        Date untilDate= dateFormat.parse("18-04-2016 00:10");
+        long secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
+        
+        long months = Dates.getMonthsFromSeconds(secondsInterval);
+        long expected = 3;
+        assertEquals(expected, months);
+        secondsInterval = Dates.removeMonthsFromSeconds(secondsInterval, months);
+        expected = 1552200;
+        assertEquals(expected, secondsInterval);  
+        
+        long weeks = Dates.getWeeksFromSeconds(secondsInterval);
+        expected = 2;
+        assertEquals(expected, weeks);
+        secondsInterval = Dates.removeWeeksFromSeconds(secondsInterval, weeks);
+        expected = 342600;
+        assertEquals(expected, secondsInterval);
+        
+        long days = Dates.getDaysFromSeconds(secondsInterval);
+        expected = 3;
+        assertEquals(expected, days);
+        secondsInterval = Dates.removeDaysFromSeconds(secondsInterval, days);
+        expected = 83400;
+        assertEquals(expected, secondsInterval);
+        
+        long minutes = Dates.getMinutesFromSeconds(secondsInterval);
+        expected = 1390;
+        assertEquals(expected, minutes);
+    }
+    
+    @Test
     public void testGetSecondsFromDays() {
         long days = 1;
         long seconds = Dates.getSecondsFromDays(days);

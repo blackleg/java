@@ -38,6 +38,8 @@ public class Dates {
     public static final long SECONDS_IN_WEEK = 604800;
     public static final long SECONDS_IN_DAY = 86400;
     
+    public static final long MINUTES_IN_HOUR = 60;
+    
     public static Date fromStringWithFormat(String format, String stringFecha) throws ParseException {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat(format);
         return formatoDelTexto.parse(stringFecha);
@@ -140,6 +142,10 @@ public class Dates {
     
     public static long getDaysFromSeconds(long seconds) {
         return TimeUnit.SECONDS.toDays(seconds);
+    }
+    
+    public static long removeDaysFromSeconds(long seconds, long days) {
+        return removeSeconds(seconds, getSecondsFromDays(days));
     }
     
     /**
