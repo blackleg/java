@@ -15,8 +15,6 @@
  */
 package es.blackleg.java.utilities;
 
-import java.util.Objects;
-
 /**
  *
  * @author Blackleg blackleg@openaliasbox.org

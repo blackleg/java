@@ -26,9 +26,9 @@ import static org.junit.Assert.*;
  *
  * @author hector
  */
-public class ObjectUtilsTest {
+public class ObjectsTest {
     
-    public ObjectUtilsTest() {
+    public ObjectsTest() {
     }
     
     @BeforeClass
@@ -48,22 +48,22 @@ public class ObjectUtilsTest {
     }
 
     /**
-     * Test of checkTwoObjectsNonNull method, of class ObjectUtils.
+     * Test of nonNull method, of class Objects.
      */
     @Test
     public void testCheckTwoObjectsNonNull() {
         Object objectOne = null;
         Object objectTwo = null;
-        assertFalse(ObjectUtils.checkTwoObjectsNonNull(objectOne, objectTwo));
+        assertFalse(Objects.nonNull(objectOne, objectTwo));
         
         objectOne = new Object();
-        assertFalse(ObjectUtils.checkTwoObjectsNonNull(objectOne, objectTwo));
+        assertFalse(Objects.nonNull(objectOne, objectTwo));
         
         objectTwo = new Object();
-        assertTrue(ObjectUtils.checkTwoObjectsNonNull(objectOne, objectTwo));
+        assertTrue(Objects.nonNull(objectOne, objectTwo));
         
         objectOne = null;
-        assertFalse(ObjectUtils.checkTwoObjectsNonNull(objectOne, objectTwo));
+        assertFalse(Objects.nonNull(objectOne, objectTwo));
 
     }
     
