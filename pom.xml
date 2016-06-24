@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>es.blackleg.java</groupId>
     <artifactId>utilities</artifactId>
-    <version>1.27-SNAPSHOT</version>
+    <version>1.30.0</version>
     <packaging>jar</packaging>
     <name>${project.groupId}.${project.artifactId}</name>
     <description>Blackleg's utilities package</description>
@@ -51,7 +51,7 @@
 	<connection>scm:git:git@github.com:blackleg/java-utilities.git</connection>
 	<developerConnection>scm:git:git@github.com:blackleg/java-utilities.git</developerConnection>
 	<url>https://github.com/blackleg/java-utilities</url>
-      <tag>HEAD</tag>
+      <tag>utilities-1.30.0</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
