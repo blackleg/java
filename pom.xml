@@ -30,10 +30,10 @@
     </properties>
     <dependencies>
         <dependency>
-		<groupId>es.blackleg.java</groupId>
-		<artifactId>exceptions</artifactId>
-		<version>1.2</version>
-	</dependency>
+            <groupId>es.blackleg.java</groupId>
+            <artifactId>exceptions</artifactId>
+            <version>1.2</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -48,10 +48,10 @@
         </dependency>
     </dependencies>
     <scm>
-	<connection>scm:git:git@github.com:blackleg/java-utilities.git</connection>
-	<developerConnection>scm:git:git@github.com:blackleg/java-utilities.git</developerConnection>
-	<url>https://github.com/blackleg/java-utilities</url>
-      <tag>HEAD</tag>
+        <connection>scm:git:git@github.com:blackleg/java-utilities.git</connection>
+        <developerConnection>scm:git:git@github.com:blackleg/java-utilities.git</developerConnection>
+        <url>https://github.com/blackleg/java-utilities</url>
+        <tag>HEAD</tag>
     </scm>
     <distributionManagement>
         <snapshotRepository>
@@ -64,7 +64,7 @@
         </repository>
     </distributionManagement>  
     <build>
-	<plugins>
+        <plugins>
             <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -82,31 +82,31 @@
                 <version>2.5.3</version>
             </plugin>
             <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>3.0.0</version>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar-no-fork</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.10.3</version>
-                    <executions>
-                        <execution>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <executions>
+                    <execution>
                         <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
                         </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -124,6 +124,6 @@
                     </execution>
                 </executions>
             </plugin>
-	</plugins>
+        </plugins>
     </build>
 </project>
