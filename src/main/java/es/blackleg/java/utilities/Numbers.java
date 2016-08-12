@@ -34,6 +34,8 @@ public class Numbers {
     public static final int TWO = 2;
     public static final int MINUSTWO = -2;
     
+    public static final int ONETHOUSAND = 1000;
+    
     /**
      *
      * @param number
