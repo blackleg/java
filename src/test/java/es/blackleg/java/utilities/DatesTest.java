@@ -433,6 +433,7 @@ public class DatesTest {
 
     /**
      * Test of checkIfDateIsBetweenDates method, of class DateUtils.
+     * @throws java.text.ParseException
      */
     @Test
     public void testCheckIfDateIsBetweenDates() throws ParseException {
