@@ -15,7 +15,7 @@ before_install:
   - cat /etc/hosts # optionally check the content *after*
   
 install:
-    - mvn clean
+    - mvn clean validate
 
 script:
-    - mvn clean
+    - mvn verify -Dgpg.skip
