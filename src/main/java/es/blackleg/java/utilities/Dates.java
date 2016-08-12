@@ -173,7 +173,7 @@ public class Dates {
     }
     
     public static long getSecondsFromMonths(long months) {
-        return Math.round(SECONDS_IN_MONTH*months);
+        return SECONDS_IN_MONTH * months;
     }
     
     public static long removeMonthsFromSeconds(long seconds, long months) {
