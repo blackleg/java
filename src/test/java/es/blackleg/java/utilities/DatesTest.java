@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -65,75 +66,74 @@ public class DatesTest {
     
     @Test
     public void testGetSecondsInDateInterval() throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        Date fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        Date untilDate = dateFormat.parse("01-01-2016 00:10:00");
-        long secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
+        Date fromDate = Dates.now();
         long secondsResult = 600;
+        Date untilDate = Dates.addSeconds(fromDate, 600);
+        long secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate = dateFormat.parse("01-01-2016 00:00:01");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 1);
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = 1;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate = dateFormat.parse("01-01-2016 00:00:15");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 15);
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = 15;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate = dateFormat.parse("01-01-2016 00:01:00");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 60);
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = 60;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate = dateFormat.parse("01-01-2016 01:00:00");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 3600);
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = 3600;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate = dateFormat.parse("02-01-2016 00:00:00");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 86400);
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = 86400;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate = dateFormat.parse("08-01-2016 00:00:00");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, Long.valueOf(Dates.SECONDS_IN_WEEK).intValue());
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = Dates.SECONDS_IN_WEEK;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate = dateFormat.parse("31-01-2016 00:00:00");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, Long.valueOf(Dates.SECONDS_IN_MONTH).intValue());
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = Dates.SECONDS_IN_MONTH;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate = dateFormat.parse("01-02-2016 00:00:00");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 2678400);
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = 2678400;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-02-2016 00:00:00");
-        untilDate = dateFormat.parse("01-03-2016 00:00:00");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 2505600);
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = 2505600;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate = dateFormat.parse("01-02-2016 00:00:00");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 2678400);
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = 2678400;
         assertEquals(secondsResult, secondsInterval);
         
-        fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        untilDate= dateFormat.parse("18-04-2016 00:10:00");
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 9328200);
         secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         secondsResult = 9328200;
         assertEquals(secondsResult, secondsInterval);
@@ -336,7 +336,7 @@ public class DatesTest {
         Date fromDate = dateFormat.parse("01-01-2016 00:00:00");
         Date untilDate= dateFormat.parse("18-04-2016 00:10:00");
         long secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
-        /*long months = Dates.getMonthsFromSeconds(secondsInterval);
+        long months = Dates.getMonthsFromSeconds(secondsInterval);
         long expected = 3;
         assertEquals(expected, months);
         secondsInterval = Dates.removeMonthsFromSeconds(secondsInterval, months);
@@ -359,7 +359,7 @@ public class DatesTest {
         
         long minutes = Dates.getMinutesFromSeconds(secondsInterval);
         expected = 1390;
-        assertEquals(expected, minutes);*/
+        assertEquals(expected, minutes);
     }
     
     @Test

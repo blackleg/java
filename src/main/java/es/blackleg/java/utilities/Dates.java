@@ -124,7 +124,7 @@ public class Dates {
      * @return long Seconds
      */
     public static long getSecondsFromMillis(long milliseconds) {
-        return Math.round(milliseconds / Numbers.ONETHOUSAND);
+        return TimeUnit.MILLISECONDS.toSeconds(milliseconds);
     }
     
     public static long getDateInterval(Date fromDate, Date untilDate) {
