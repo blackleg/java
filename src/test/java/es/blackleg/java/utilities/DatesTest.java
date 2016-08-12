@@ -332,9 +332,8 @@ public class DatesTest {
     
     @Test
     public void testRemoveFromSeconds() throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        Date fromDate = dateFormat.parse("01-01-2016 00:00:00");
-        Date untilDate= dateFormat.parse("18-04-2016 00:10:00");
+        Date fromDate = Dates.now();
+        Date untilDate = Dates.addSeconds(fromDate, 9328200);
         long secondsInterval = Dates.getSecondsInDateInterval(fromDate, untilDate);
         long months = Dates.getMonthsFromSeconds(secondsInterval);
         long expected = 3;
