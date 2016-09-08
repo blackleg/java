@@ -98,7 +98,17 @@ public class Numbers {
      * @return Rounded double
      */
     public static double simpleRoundDouble(double number) {
-        return getBigDecimalWithScale(number, TWO).doubleValue();
+        return simpleRoundDouble(number, TWO);
+    }
+    
+    /**
+     * Simple round double
+     * @param number A double number
+     * @param scale
+     * @return Rounded double
+     */
+    public static double simpleRoundDouble(double number, int scale) {
+        return getBigDecimalWithScale(number, scale).doubleValue();
     }
     
     public static NumberFormat getCurrencyFormat() {

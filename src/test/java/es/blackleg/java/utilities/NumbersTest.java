@@ -60,9 +60,17 @@ public class NumbersTest {
     
     @Test
     public void testRoundDouble() {
-        double initial = 100.12345;
+        double initial = 100.123;
         double compare = 100.12;
         double result = Numbers.simpleRoundDouble(initial);
+        assertEquals(compare, result, 0.0);
+        initial = 100.126;
+        compare = 100.13;
+        result = Numbers.simpleRoundDouble(initial);
+        assertEquals(compare, result, 0.0);
+        initial = 100.125;
+        compare = 100.13;
+        result = Numbers.simpleRoundDouble(initial);
         assertEquals(compare, result, 0.0);
     }
     
