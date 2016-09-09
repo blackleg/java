@@ -19,7 +19,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -585,7 +584,12 @@ public class DatesTest {
         Date addedDate = Dates.addSeconds(date, seconds);
         assertNotNull(addedDate);
     }
-
     
-    
+    @Test
+    public void testConvertToSqlDate() {
+        Date date = Dates.now();
+        java.sql.Date sqlDate = Dates.convertToSqlDate(date);
+        assertNotNull(sqlDate);
+        assertEquals(date.getTime(), sqlDate.getTime());
+    }
 }

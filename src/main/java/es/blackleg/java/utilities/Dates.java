@@ -328,5 +328,13 @@ public class Dates {
         calendar.add(Calendar.SECOND, seconds);
         return calendar.getTime();
     }
+    
+    public static java.sql.Date convertToSqlDate(java.util.Date date) {
+        if (Objects.nonNull(date)) {
+            return new java.sql.Date(date.getTime());
+        } else {
+            return null;
+        }
+    }
 
 }
