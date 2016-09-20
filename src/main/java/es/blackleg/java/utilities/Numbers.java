@@ -34,6 +34,8 @@ public class Numbers {
     public static final int TWO = 2;
     public static final int MINUSTWO = -2;
     
+    public static final int ONE_HUNDRED = 100;
+    public static final double ONE_HUNDRED_DOUBLE = 100.0;
     public static final int ONETHOUSAND = 1000;
     
     /**
