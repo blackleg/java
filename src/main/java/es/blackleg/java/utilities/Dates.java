@@ -36,6 +36,7 @@ public class Dates {
     public static final long SECONDS_IN_MONTH = 2592000;
     public static final long SECONDS_IN_WEEK = 604800;
     public static final long SECONDS_IN_DAY = 86400;
+    public static final long SECONDS_IN_TWO_DAY = 172800;
     
     public static final long MINUTES_IN_HOUR = 60;
     
