@@ -94,11 +94,21 @@ public class NumbersTest {
     }
     
     @Test
+    public void testDoubleFromInt() {
+        int initial = 100;
+        double compare = 100.0;
+        double result = Numbers.doubleFromInt(initial);
+        assertEquals(compare, result, 0.0);
+        
+    }
+    
+    @Test
     public void testIntegerFromDouble() {
         double initial = 123.123;
         Integer compare = 123;
         Integer result = Numbers.integerFromDouble(initial);
         assertEquals(compare, result);
+        
     }
     
     @Test
