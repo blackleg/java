@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Blackleg blackleg@openaliasbox.org.
+ * Copyright 2015 Blackleg hectorespertpardo@gmail.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,6 +39,9 @@ public class Dates {
     public static final long SECONDS_IN_TWO_DAY = 172800;
     
     public static final long MINUTES_IN_HOUR = 60;
+    public static final long SECONDS_IN_HOUR = 3600;
+    
+    public static final long DAYS_IN_MONTH = 30;
     
     public static Date fromStringWithFormat(String format, String stringFecha) throws ParseException {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat(format);
@@ -187,6 +190,22 @@ public class Dates {
         } else {
             return seconds;
         }
+    }
+    
+    public static long getHoursFromSeconds(long seconds) {
+        return Math.round(TimeUnit.SECONDS.toHours(seconds));
+    }
+    
+    public static long getMonthsFromDays(long days) {
+        return Math.round(days/DAYS_IN_MONTH);
+    }
+    
+    public static long getDaysFromMonths(long months) {
+        return Math.round(months * DAYS_IN_MONTH);
+    }
+    
+    public static long removeMonthsFromDays(long days, long months) {
+        return removeSeconds(days, getDaysFromMonths(months));
     }
 
     /**
