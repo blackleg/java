@@ -626,4 +626,75 @@ public class DatesTest {
         untilDate = dateFormat.parse("05-01-2016 00:00");
         assertTrue(Dates.afterOrEquals(untilDate, fromDate));
     }
+    
+    
+    @Test
+    public void testGetHoursFromSeconds() {
+        
+        long seconds = 3600;
+        long expected = 1;
+        long result = Dates.getHoursFromSeconds(seconds);
+        assertEquals(expected, result);
+        
+        seconds = 7200;
+        expected = 2;
+        result = Dates.getHoursFromSeconds(seconds);
+        assertEquals(expected, result);
+        
+        seconds = 18000;
+        expected = 5;
+        result = Dates.getHoursFromSeconds(seconds);
+        assertEquals(expected, result);
+    }
+    
+    @Test
+    public void testGetMonthsFromDays() {
+        long days = 30;
+        long expected = 1;
+        long result = Dates.getMonthsFromDays(days);
+        assertEquals(expected, result);
+        
+        days = 60;
+        expected = 2;
+        result = Dates.getMonthsFromDays(days);
+        assertEquals(expected, result);
+        
+        days = 35;
+        expected = 1;
+        result = Dates.getMonthsFromDays(days);
+        assertEquals(expected, result);
+    }
+    
+    
+    @Test
+    public void testGetDaysFromMonths() {
+        long months = 1;
+        long expected = 30;
+        long result = Dates.getDaysFromMonths(months);
+        assertEquals(expected, result);
+        
+        months = 2;
+        expected = 60;
+        result = Dates.getDaysFromMonths(months);
+        assertEquals(expected, result);
+    }
+    
+    
+    @Test
+    public void testRemoveMonthsFromDays() {
+        
+        long months = 1;
+        long days = 31;
+        long expected = 1;
+        long result = Dates.removeMonthsFromDays(days, months);
+        assertEquals(expected, result);
+        
+        months = 2;
+        days = 62;
+        expected = 2;
+        result = Dates.removeMonthsFromDays(days, months);
+        assertEquals(expected, result);
+        
+
+    }
 }
