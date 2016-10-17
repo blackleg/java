@@ -584,6 +584,14 @@ public class DatesTest {
         Date addedDate = Dates.addSeconds(date, seconds);
         assertNotNull(addedDate);
     }
+    
+    @Test
+    public void testAddSecondsLong() {
+        Date date = Dates.now();
+        long seconds = 60;
+        Date addedDate = Dates.addSeconds(date, seconds);
+        assertNotNull(addedDate);
+    }
 
     @Test
     public void testConvertToSqlDate() {

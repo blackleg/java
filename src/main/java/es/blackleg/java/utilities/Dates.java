@@ -34,15 +34,17 @@ import org.apache.commons.lang3.time.DateUtils;
  */
 public class Dates extends DateUtils {
     
-    public static final long SECONDS_IN_MONTH = 2592000;
-    public static final long SECONDS_IN_WEEK = 604800;
-    public static final long SECONDS_IN_DAY = 86400;
-    public static final long SECONDS_IN_TWO_DAY = 172800;
+    public static final int SECONDS_IN_MONTH = 2592000;
+    public static final int SECONDS_IN_WEEK = 604800;
+    public static final int SECONDS_IN_DAY = 86400;
+    public static final int SECONDS_IN_TWO_DAY = 172800;
     
-    public static final long MINUTES_IN_HOUR = 60;
-    public static final long SECONDS_IN_HOUR = 3600;
+    public static final int MINUTES_IN_HOUR = 60;
+    public static final int SECONDS_IN_HOUR = 3600;
     
-    public static final long DAYS_IN_MONTH = 30;
+    public static final int SECONDS_IN_THREE_HOURS = 10800;
+    
+    public static final int DAYS_IN_MONTH = 30;
     
     public static Date fromStringWithFormat(String format, String stringFecha) throws ParseException {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat(format);
@@ -338,17 +340,6 @@ public class Dates extends DateUtils {
         return calendar;
     }
     
-    /**
-     * Add seconds to date
-     * @param time Date
-     * @param seconds The number of seconds
-     * @return Date
-     */
-    public static Date addSeconds(Date time, int seconds) {
-        Calendar calendar = getCalendar(time);
-        calendar.add(Calendar.SECOND, seconds);
-        return calendar.getTime();
-    }
     
     public static java.sql.Date convertToSqlDate(java.util.Date date) {
         if (Objects.nonNull(date)) {
@@ -369,6 +360,14 @@ public class Dates extends DateUtils {
         } else {
             return null;
         }
+    }
+    
+    public static Date addSeconds(Date date, long seconds) {
+        return DateUtils.addSeconds(date, Long.valueOf(seconds).intValue());
+    }
+    
+    public static Date addSeconds(Date date, int seconds) {
+        return DateUtils.addSeconds(date, seconds);
     }
 
 }
