@@ -26,12 +26,13 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.time.DateUtils;
 
 /**
  *
  * @author hector
  */
-public class Dates {
+public class Dates extends DateUtils {
     
     public static final long SECONDS_IN_MONTH = 2592000;
     public static final long SECONDS_IN_WEEK = 604800;
@@ -352,6 +353,19 @@ public class Dates {
     public static java.sql.Date convertToSqlDate(java.util.Date date) {
         if (Objects.nonNull(date)) {
             return new java.sql.Date(date.getTime());
+        } else {
+            return null;
+        }
+    }
+    
+    /**
+     * Round date to minutes
+     * @param date
+     * @return Date
+     */
+    public static Date roundToMinutes(Date date) {
+        if (Objects.nonNull(date)) {
+            return round(date, Calendar.MINUTE);
         } else {
             return null;
         }

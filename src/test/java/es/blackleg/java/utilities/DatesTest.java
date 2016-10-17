@@ -697,4 +697,19 @@ public class DatesTest {
         
 
     }
+    
+    
+    @Test
+    public void testRoundToMinutes() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date = dateFormat.parse("00:00:35");
+        Date expectedDate = dateFormat.parse("00:01:00");
+        Date resultDate = Dates.roundToMinutes(date);
+        assertEquals(expectedDate, resultDate);
+        
+        date = dateFormat.parse("00:00:25");
+        expectedDate = dateFormat.parse("00:00:00");
+        resultDate = Dates.roundToMinutes(date);
+        assertEquals(expectedDate, resultDate);
+    }
 }
