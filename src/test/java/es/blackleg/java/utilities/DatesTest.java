@@ -720,4 +720,26 @@ public class DatesTest {
         resultDate = Dates.roundToMinutes(date);
         assertEquals(expectedDate, resultDate);
     }
+    
+    
+    @Test
+    public void testGetSecondsFromHours() {
+        
+        long hours = 1;
+        long expected = 3600;
+        long result = Dates.getSecondsFromHours(hours);
+        assertEquals(expected, result);
+        
+        hours = 2;
+        expected = 7200;
+        result = Dates.getSecondsFromHours(hours);
+        assertEquals(expected, result);
+        
+        hours = 5;
+        expected = 18000;
+        result = Dates.getSecondsFromHours(hours);
+        assertEquals(expected, result);
+        
+        
+    }
 }

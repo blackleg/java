@@ -154,6 +154,10 @@ public class Dates extends DateUtils {
         return removeSeconds(seconds, getSecondsFromDays(days));
     }
     
+    public static long getSecondsFromHours(long hours) {
+        return TimeUnit.HOURS.toSeconds(hours);
+    }
+    
     /**
      * Get seconds fromDays
      * @param days
