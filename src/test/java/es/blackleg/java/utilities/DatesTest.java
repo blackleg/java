@@ -578,19 +578,38 @@ public class DatesTest {
     }
 
     @Test
-    public void testAddSeconds() {
-        Date date = Dates.now();
+    public void testAddSeconds() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
+        Date date = dateFormat.parse("00:00");
+        Date expectedDate = dateFormat.parse("01:00");
         int seconds = 60;
         Date addedDate = Dates.addSeconds(date, seconds);
         assertNotNull(addedDate);
+        assertEquals(expectedDate, addedDate);
+        
+        seconds = 0;
+        addedDate = Dates.addSeconds(date, seconds);
+        assertNotNull(addedDate);
+        assertEquals(date, addedDate);
+        
     }
     
     @Test
-    public void testAddSecondsLong() {
-        Date date = Dates.now();
+    public void testAddSecondsLong() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("mm:ss");
+        Date date = dateFormat.parse("00:00");
+        
+        Date expectedDate = dateFormat.parse("01:00");
+
         long seconds = 60;
         Date addedDate = Dates.addSeconds(date, seconds);
         assertNotNull(addedDate);
+        assertEquals(expectedDate, addedDate);
+        
+        seconds = 0;
+        addedDate = Dates.addSeconds(date, seconds);
+        assertNotNull(addedDate);
+        assertEquals(date, addedDate);
     }
 
     @Test
