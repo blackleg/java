@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package es.blackleg.java.utilities;
 
 import java.text.ParseException;
@@ -33,24 +32,34 @@ import org.apache.commons.lang3.time.DateUtils;
  * @author hector
  */
 public class Dates extends DateUtils {
-    
+
     public static final int SECONDS_IN_MONTH = 2592000;
     public static final int SECONDS_IN_WEEK = 604800;
     public static final int SECONDS_IN_DAY = 86400;
     public static final int SECONDS_IN_TWO_DAY = 172800;
-    
+
     public static final int MINUTES_IN_HOUR = 60;
     public static final int SECONDS_IN_HOUR = 3600;
-    
+
     public static final int SECONDS_IN_THREE_HOURS = 10800;
-    
+
     public static final int DAYS_IN_MONTH = 30;
-    
+
     public static Date fromStringWithFormat(String format, String stringFecha) throws ParseException {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat(format);
         return formatoDelTexto.parse(stringFecha);
     }
     
+    public static Date fromStringWithFormatUtc(String format, String stringFecha) throws ParseException {
+        return fromStringWithFormat(format, stringFecha, Timezones.utc());
+    }
+    
+    public static Date fromStringWithFormat(String format, String stringFecha, TimeZone timeZone) throws ParseException {
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat(format);
+        formatoDelTexto.setTimeZone(timeZone);
+        return formatoDelTexto.parse(stringFecha);
+    }
+
     public static Integer differenceInMonths(Date beginningDate, Date endingDate) {
         if (beginningDate == null || endingDate == null) {
             return 0;
@@ -70,46 +79,48 @@ public class Dates extends DateUtils {
         int m2 = endingDate.get(Calendar.YEAR) * 12 + endingDate.get(Calendar.MONTH);
         return m2 - m1;
     }
-    
+
     public static Integer transformMonthsCountToYears(Integer months) {
         return months / 12;
     }
-    
+
     /**
      * Transforma un Date en un String con el valor Long del Date.
+     *
      * @param fecha
-     * @return 
+     * @return
      */
     public static String transformDateToLongString(Date fecha) {
         if (fecha == null) {
             return null;
-	} else {
+        } else {
             return String.valueOf(fecha.getTime());
-	}
+        }
     }
-    
-    
+
     public static String toStringWithFormat(String format, Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat(format);
         return formatter.format(date);
     }
-    
+
     public static String toStringWithFormat(String format, Date date, TimeZone timeZone) {
         SimpleDateFormat formatter = new SimpleDateFormat(format);
         formatter.setTimeZone(timeZone);
         return formatter.format(date);
     }
-    
+
     /**
      * New Date
+     *
      * @return
      */
     public static Date now() {
         return new Date();
     }
-    
+
     /**
      * Date from Long
+     *
      * @param longDate
      * @return
      */
@@ -120,77 +131,83 @@ public class Dates extends DateUtils {
             return new Date(longDate);
         }
     }
-    
+
     public static boolean checkTwoDatesIfNotNull(Date fromDate, Date untilDate) {
         return Objects.nonNull(fromDate) && Objects.nonNull(untilDate);
     }
-    
+
     /**
      * Get seconds from milliseconds
+     *
      * @param milliseconds Milliseconds value
      * @return long Seconds
      */
     public static long getSecondsFromMillis(long milliseconds) {
         return TimeUnit.MILLISECONDS.toSeconds(milliseconds);
     }
-    
+
     public static long getDateInterval(Date fromDate, Date untilDate) {
         return getDateInterval(fromDate.getTime(), untilDate.getTime());
     }
-    
+
     public static long getDateInterval(long fromDate, long untilDate) {
         return untilDate - fromDate;
     }
-    
+
     public static long getSecondsInDateInterval(Date fromDate, Date untilDate) {
         return getSecondsFromMillis(getDateInterval(fromDate, untilDate));
     }
     
+    public static long getHoursInDateInterval(Date fromDate, Date untilDate) {
+        return getHoursFromSeconds(getSecondsInDateInterval(fromDate, untilDate));
+    }
+
     public static long getDaysFromSeconds(long seconds) {
         return TimeUnit.SECONDS.toDays(seconds);
     }
-    
+
     public static long removeDaysFromSeconds(long seconds, long days) {
         return removeSeconds(seconds, getSecondsFromDays(days));
     }
-    
+
     public static long getSecondsFromHours(long hours) {
         return TimeUnit.HOURS.toSeconds(hours);
     }
-    
+
     /**
      * Get seconds fromDays
+     *
      * @param days
      * @return
      */
     public static long getSecondsFromDays(long days) {
         return TimeUnit.DAYS.toSeconds(days);
     }
-    
+
     public static long getWeeksFromSeconds(long seconds) {
-        return Math.round(seconds/SECONDS_IN_WEEK);
+        return Math.round(seconds / SECONDS_IN_WEEK);
     }
-    
+
     public static long getSecondsFromWeeks(long weeks) {
-        return Math.round(SECONDS_IN_WEEK*weeks);
+        return Math.round(SECONDS_IN_WEEK * weeks);
     }
-    
+
     public static long removeWeeksFromSeconds(long seconds, long weeks) {
         return removeSeconds(seconds, getSecondsFromWeeks(weeks));
     }
-    
+
     public static long getMonthsFromSeconds(long seconds) {
-        return Math.round(seconds/SECONDS_IN_MONTH);
+        return Math.round(seconds / SECONDS_IN_MONTH);
     }
-    
+
     public static long getSecondsFromMonths(long months) {
         return SECONDS_IN_MONTH * months;
     }
-    
+
     public static long removeMonthsFromSeconds(long seconds, long months) {
         return removeSeconds(seconds, getSecondsFromMonths(months));
     }
-    
+
     private static long removeSeconds(long seconds, long secondsToRemove) {
         if (seconds >= secondsToRemove) {
             return seconds - secondsToRemove;
@@ -198,38 +215,40 @@ public class Dates extends DateUtils {
             return seconds;
         }
     }
-    
+
     public static long getHoursFromSeconds(long seconds) {
         return Math.round(TimeUnit.SECONDS.toHours(seconds));
     }
-    
+
     public static long getMonthsFromDays(long days) {
-        return Math.round(days/DAYS_IN_MONTH);
+        return Math.round(days / DAYS_IN_MONTH);
     }
-    
+
     public static long getDaysFromMonths(long months) {
         return Math.round(months * DAYS_IN_MONTH);
     }
-    
+
     public static long removeMonthsFromDays(long days, long months) {
         return removeSeconds(days, getDaysFromMonths(months));
     }
 
     /**
      * Get minutes from seconds
+     *
      * @param seconds
      * @return
      */
     public static long getMinutesFromSeconds(long seconds) {
         return TimeUnit.SECONDS.toMinutes(seconds);
     }
-    
+
     public static String getMilisTimeString(Date date) {
         return Long.toString(date.getTime());
     }
-    
+
     /**
      * Check if date interval collision another date interval
+     *
      * @param firstDateInInterval
      * @param secondDateInInterval
      * @param firsrDateInIntervalToCompare
@@ -243,7 +262,7 @@ public class Dates extends DateUtils {
             return false;
         }
     }
-    
+
     public static boolean afterOrEquals(Date dateToCompare, Date date) {
         if (checkTwoDatesIfNotNull(dateToCompare, date)) {
             return dateToCompare.getTime() <= date.getTime();
@@ -251,7 +270,7 @@ public class Dates extends DateUtils {
             return false;
         }
     }
-    
+
     public static boolean beforeOrEquals(Date dateToCompare, Date date) {
         if (checkTwoDatesIfNotNull(dateToCompare, date)) {
             return dateToCompare.getTime() >= date.getTime();
@@ -259,9 +278,10 @@ public class Dates extends DateUtils {
             return false;
         }
     }
-    
+
     /**
      * Check if Date Interval is inside another interval
+     *
      * @param firstDateInterval
      * @param secondDateInterval
      * @param firsrDateIntervalToCompare
@@ -275,9 +295,10 @@ public class Dates extends DateUtils {
             return false;
         }
     }
-    
+
     /**
      * Check if date interval contains another date interval
+     *
      * @param firstDate
      * @param secondDate
      * @param firsrDateInIntervalToCompare
@@ -291,9 +312,10 @@ public class Dates extends DateUtils {
             return false;
         }
     }
-    
+
     /**
      * Check if Date is between two Dates
+     *
      * @param date
      * @param firstDate
      * @param secondDate
@@ -306,21 +328,25 @@ public class Dates extends DateUtils {
             return false;
         }
     }
-    
+
     /**
-     * Calls {@link #toLocalDate(Date, ZoneId)} with the system default time zone.
+     * Calls {@link #toLocalDate(Date, ZoneId)} with the system default time
+     * zone.
+     *
      * @param date
-     * @return 
+     * @return
      */
     public static LocalDate toLocalDate(java.util.Date date) {
         return toLocalDate(date, ZoneId.systemDefault());
     }
-    
+
     /**
-     * Creates {@link LocalDate} from {@code java.util.Date} or it's subclasses. Null-safe.
+     * Creates {@link LocalDate} from {@code java.util.Date} or it's subclasses.
+     * Null-safe.
+     *
      * @param date
      * @param zone
-     * @return 
+     * @return
      */
     public static LocalDate toLocalDate(java.util.Date date, ZoneId zone) {
         if (Objects.isNull(date)) {
@@ -330,11 +356,12 @@ public class Dates extends DateUtils {
             return ((java.sql.Date) date).toLocalDate();
         } else {
             return Instant.ofEpochMilli(date.getTime()).atZone(zone).toLocalDate();
-        }   
+        }
     }
-    
+
     /**
      * Get calendar with date
+     *
      * @param time Time
      * @return Calendar
      */
@@ -343,8 +370,7 @@ public class Dates extends DateUtils {
         calendar.setTime(time);
         return calendar;
     }
-    
-    
+
     public static java.sql.Date convertToSqlDate(java.util.Date date) {
         if (Objects.nonNull(date)) {
             return new java.sql.Date(date.getTime());
@@ -352,26 +378,59 @@ public class Dates extends DateUtils {
             return null;
         }
     }
-    
+
+    public static Date addSeconds(Date date, long seconds) {
+        return DateUtils.addSeconds(date, Long.valueOf(seconds).intValue());
+    }
+
+    public static Date addSeconds(Date date, int seconds) {
+        return DateUtils.addSeconds(date, seconds);
+    }
+
     /**
      * Round date to minutes
+     *
      * @param date
      * @return Date
      */
     public static Date roundToMinutes(Date date) {
+        return roundSecure(date, Calendar.MINUTE);
+    }
+
+    public static Date roundSecure(Date date, int field) {
         if (Objects.nonNull(date)) {
-            return round(date, Calendar.MINUTE);
+            return round(date, field);
         } else {
             return null;
         }
     }
     
-    public static Date addSeconds(Date date, long seconds) {
-        return DateUtils.addSeconds(date, Long.valueOf(seconds).intValue());
+    
+    /**
+     * Round date to minutes
+     *
+     * @param date
+     * @return Date
+     */
+    public static Date roundToHour(Date date) {
+        return roundSecure(date, Calendar.HOUR);
     }
     
-    public static Date addSeconds(Date date, int seconds) {
-        return DateUtils.addSeconds(date, seconds);
+    public static Date floorSecure(Date date, int field) {
+        if (Objects.nonNull(date)) {
+            return truncate(date, field);
+        } else {
+            return null;
+        }
+    }
+    
+    
+    public static Date floorToHour(Date date) {
+        return floorSecure(date, Calendar.HOUR);
+    }
+    
+    public static Calendar getUtcCalendar() {
+        return Calendar.getInstance(Timezones.utc());
     }
 
 }

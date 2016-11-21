@@ -758,7 +758,49 @@ public class DatesTest {
         expected = 18000;
         result = Dates.getSecondsFromHours(hours);
         assertEquals(expected, result);
-        
-        
     }
+    
+    @Test
+    public void testRoundToHour() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date = dateFormat.parse("00:35:00");
+        Date expectedDate = dateFormat.parse("01:00:00");
+        Date resultDate = Dates.roundToHour(date);
+        assertEquals(expectedDate, resultDate);
+        
+        date = dateFormat.parse("00:25:00");
+        expectedDate = dateFormat.parse("00:00:00");
+        resultDate = Dates.roundToHour(date);
+        assertEquals(expectedDate, resultDate);
+    }
+    
+    @Test
+    public void testFloorToHour() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date = dateFormat.parse("00:35:00");
+        Date expectedDate = dateFormat.parse("00:00:00");
+        Date resultDate = Dates.floorToHour(date);
+        assertEquals(expectedDate, resultDate);
+        
+        date = dateFormat.parse("00:25:00");
+        expectedDate = dateFormat.parse("00:00:00");
+        resultDate = Dates.floorToHour(date);
+        assertEquals(expectedDate, resultDate);
+    }
+    
+    
+    @Test
+    public void testGetHoursInDateInterval() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date fromDate = dateFormat.parse("00:00:00");
+        Date untilDate = dateFormat.parse("01:00:00");
+        long result = Dates.getHoursInDateInterval(fromDate, untilDate);
+        assertEquals(1l, result);
+        
+        fromDate = dateFormat.parse("00:00:00");
+        untilDate = dateFormat.parse("15:00:00");
+        result = Dates.getHoursInDateInterval(fromDate, untilDate);
+        assertEquals(15l, result);
+    }
+
 }

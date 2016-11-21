@@ -21,12 +21,17 @@ import java.util.TimeZone;
  *
  * @author hector
  */
-public class TimeZones {
+public class Timezones {
     
     public static final String EUROPEMADRID = "Europe/Madrid";
+    public static final String UTC = "UTC";
     
     public static TimeZone europeMadrid() {
         return TimeZone.getTimeZone(EUROPEMADRID);
+    }
+    
+    public static TimeZone utc() {
+        return TimeZone.getTimeZone(UTC);
     }
     
 }
