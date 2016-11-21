@@ -47,6 +47,8 @@ public class DatabaseConnection {
     private String user;
     
     private String password;
+    
+    private String connectionParams;
 
     public DatabaseConnection(String driver, String preConnection, String connectionFormat, String host, String port, String database) throws ClassNotFoundException {
         this.driver = driver;
@@ -195,7 +197,11 @@ public class DatabaseConnection {
     }
     
     private String makeConnection() {
-        return String.format(connectionFormat, preConnection, host, port, database);
+        String connectionString = String.format(connectionFormat, preConnection, host, port, database);
+        if (Strings.checkIfIsNotEmptyOrNull(connectionParams)) {
+            connectionString = String.format("%s?%s", connectionString, connectionParams);
+        }
+        return connectionString;
     }
     
     public void startConnection() throws StartConnectionException {
@@ -300,5 +306,17 @@ public class DatabaseConnection {
         this.connection = connection;
     }
 
+    @Override
+    public String toString() {
+        return "DatabaseConnection{" + "driver=" + driver + ", host=" + host + ", port=" + port + ", database=" + database + ", user=" + user + '}';
+    }
+
+    public String getConnectionParams() {
+        return connectionParams;
+    }
+
+    public void setConnectionParams(String connectionParams) {
+        this.connectionParams = connectionParams;
+    }
 }
 
