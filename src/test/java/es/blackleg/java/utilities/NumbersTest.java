@@ -133,4 +133,17 @@ public class NumbersTest {
        assertNotNull(currencyString);
         assertEquals("123,46 €", currencyString);
     }
+    
+    
+    @Test
+    public void testToMinus() {
+       int number = 1;
+       int expected = -1;
+       int result = Numbers.toMinus(number);
+       assertEquals(expected, result);
+       
+       number = -1;
+       result = Numbers.toMinus(number);
+       assertEquals(expected, result);
+    }
 }

@@ -432,5 +432,13 @@ public class Dates extends DateUtils {
     public static Calendar getUtcCalendar() {
         return Calendar.getInstance(Timezones.utc());
     }
+    
+    public static Date addDays(Date date, int days) {
+        return DateUtils.addDays(date, days);
+    }
+    
+    public static Date removeDays(Date date, int days) {
+        return addDays(date, Numbers.toMinus(days));
+    }
 
 }

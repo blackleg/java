@@ -270,6 +270,14 @@ public class Numbers {
         return number > numberToCompare;
     }
     
+    public static int toMinus(int number) {
+        if (isNegative(number)) {
+            return number;
+        } else {
+            return -number;
+        }
+    }
+    
     
     
 }

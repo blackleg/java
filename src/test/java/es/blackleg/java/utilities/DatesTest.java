@@ -802,5 +802,37 @@ public class DatesTest {
         result = Dates.getHoursInDateInterval(fromDate, untilDate);
         assertEquals(15l, result);
     }
+    
+    @Test
+    public void testAddDays() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Date date = dateFormat.parse("05-01-2016 00:00");
+        Date expectedDate = dateFormat.parse("06-01-2016 00:00");
+        int days = 1;
+        Date addedDate = Dates.addDays(date, days);
+        assertNotNull(addedDate);
+        assertEquals(expectedDate, addedDate);
+        
+        days = 0;
+        addedDate = Dates.addSeconds(date, days);
+        assertNotNull(addedDate);
+        assertEquals(date, addedDate);
+    }
+    
+    @Test
+    public void testRemoveDays() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Date date = dateFormat.parse("06-01-2016 00:00");
+        Date expectedDate = dateFormat.parse("05-01-2016 00:00");
+        int days = 1;
+        Date addedDate = Dates.removeDays(date, days);
+        assertNotNull(addedDate);
+        assertEquals(expectedDate, addedDate);
+        
+        days = 0;
+        addedDate = Dates.addSeconds(date, days);
+        assertNotNull(addedDate);
+        assertEquals(date, addedDate);
+    }
 
 }
