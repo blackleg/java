@@ -270,10 +270,26 @@ public class Dates extends DateUtils {
             return false;
         }
     }
+    
+    public static boolean after(Date dateToCompare, Date date) {
+        if (checkTwoDatesIfNotNull(dateToCompare, date)) {
+            return dateToCompare.getTime() < date.getTime();
+        } else {
+            return false;
+        }
+    }
 
     public static boolean beforeOrEquals(Date dateToCompare, Date date) {
         if (checkTwoDatesIfNotNull(dateToCompare, date)) {
             return dateToCompare.getTime() >= date.getTime();
+        } else {
+            return false;
+        }
+    }
+    
+    public static boolean before(Date dateToCompare, Date date) {
+        if (checkTwoDatesIfNotNull(dateToCompare, date)) {
+            return dateToCompare.getTime() > date.getTime();
         } else {
             return false;
         }

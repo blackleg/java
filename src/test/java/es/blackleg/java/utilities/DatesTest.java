@@ -637,6 +637,24 @@ public class DatesTest {
         assertTrue(Dates.beforeOrEquals(untilDate, fromDate));
     }
     
+    
+    @Test
+    public void testBefore() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        
+        Date fromDate = dateFormat.parse("05-01-2016 00:00");
+        Date untilDate = dateFormat.parse("03-01-2016 00:00"); 
+        assertFalse(Dates.before(untilDate, fromDate));
+
+        fromDate = dateFormat.parse("04-01-2016 00:00");
+        untilDate = dateFormat.parse("07-02-2016 00:00");
+        assertTrue(Dates.before(untilDate, fromDate));
+
+        fromDate = dateFormat.parse("05-01-2016 00:00");
+        untilDate = dateFormat.parse("05-01-2016 00:00");
+        assertFalse(Dates.before(untilDate, fromDate));
+    }
+    
     @Test
     public void testAfterOrEquals() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
@@ -652,6 +670,23 @@ public class DatesTest {
         fromDate = dateFormat.parse("05-01-2016 00:00");
         untilDate = dateFormat.parse("05-01-2016 00:00");
         assertTrue(Dates.afterOrEquals(untilDate, fromDate));
+    }
+    
+    @Test
+    public void testAfter() throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        
+        Date fromDate = dateFormat.parse("05-01-2016 00:00");
+        Date untilDate = dateFormat.parse("03-01-2016 00:00"); 
+        assertTrue(Dates.after(untilDate, fromDate));
+
+        fromDate = dateFormat.parse("04-01-2016 00:00");
+        untilDate = dateFormat.parse("07-02-2016 00:00");
+        assertFalse(Dates.after(untilDate, fromDate));
+
+        fromDate = dateFormat.parse("05-01-2016 00:00");
+        untilDate = dateFormat.parse("05-01-2016 00:00");
+        assertFalse(Dates.after(untilDate, fromDate));
     }
     
     
