@@ -15,3 +15,15 @@ function isDevelBranch {
 		return 1;
 	fi
 }
+
+function isTagRelease {
+	echo "##### Test Tag Release ####"
+	echo $TRAVIS_BRANCH;
+	echo $TRAVIS_TAG;
+	#if  [ "$TRAVIS_BRANCH" = 'master' ] && ; then
+	#	return 0;
+	#else
+	#	return 1;
+	#fi
+	return 1;
+}
