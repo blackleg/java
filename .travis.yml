@@ -7,4 +7,4 @@ install:
     - mvn validate
 
 script:
-    - mvn verify -Dgpg.skip
+    - .travis/build
