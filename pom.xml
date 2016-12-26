@@ -52,6 +52,8 @@
                                 </goals>
                                 <configuration>
                                     <executable>gpg</executable>
+                                    <gpg.keyname>${env.GPG_KEY_NAME}</gpg.keyname>
+                                    <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
                                 </configuration> 
                             </execution>
                         </executions>
