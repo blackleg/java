@@ -1,9 +1,11 @@
 language: java
 jdk:
-- oraclejdk8
+  - oraclejdk8
 install:
-- mvn clean
-- mvn validate
+  - mvn clean
+  - mvn validate
+before_script:
+  - ".travi/before-script.sh."
 script:
 - ".travis/build.sh"
 env:
