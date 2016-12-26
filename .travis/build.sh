@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source .travis/util.sh
+source .travis/utils.sh
 
 if isDeployable; then
 	mvn -P release install
