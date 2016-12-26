@@ -3,7 +3,7 @@
 source .travis/utils.sh
 
 if isDeployable; then
-	mvn -P release install
+	mvn -P release --settings .travis/settings.xml install
 else
 	mvn install
 fi
