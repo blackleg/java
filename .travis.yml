@@ -1,10 +1,12 @@
 language: java
 jdk:
-  - oraclejdk8
-  
+- oraclejdk8
 install:
-    - mvn clean
-    - mvn validate
-
+- mvn clean
+- mvn validate
 script:
-    - .travis/build.sh
+- ".travis/build.sh"
+env:
+  global:
+  - secure: MIEi9K8lLgLqSFtx4vP0Y28nDDgZA+4UrX6pkcHZdTH8qR/Z4dTWxomRHBMpvNayBNebEnbGhcOikR7sBagYA+MheyjvWgDw8afkXOQ45EOkHcbQyd+BKyroV/OpYt9Vhx68WqDS8k45v0haA+6SQIlQmGMAK5Zcu7hotEKHAOB+DhqlNhdgeLQJ14ig3cw/ZbboisrE70ept5SkJe2H6igJoRq+nbTvlI+6GPiJa+9hU+qphVEViuubqdhHwb1ECb+1nA6OlgbC4TaBNO7DaFxg/GMPZJq10lR5JeePSGsGWbk6D/Jxtn1S/TniL7c8byu615LCzUk8dSPjmcLMkyOjCZje7k5oh/N/QvmPL5n7vowukQaTNPtURdxemBmPntqSC4MreYQ1ywMZVDM8b0gC6FK/cg/M9IATOumLjti0O41tz1BoOsPGByYxm3qUGOpO3n0vhs1xSt/HXGFdWCYJaoPbmAqhLVnvkjtmp1BQlP+DxlSuKjVrNq7rSQOHwZZr8C6EyMkO1yztZx52Sf+tyADRKiLxXvzlU2v40EYDN2laTRm9fw4C6STNwG+7P7PSG8cADsWOMUbPVPw4HX7n+J11Dr6POdfbzFgsjxx1UulzhusilUXlM1TSg2o04u2dEKP/BSz1CAi9PE3yoA8zG7K4oxRXcvPzYZzLWRE=
+  - secure: VWyP0KwzPF/iUAXygFp2j/VVMuUHOO1NFCloQgEAZ3ZbJitK2GUqsVLLyC+SeacTiL/Vj20QzFT47Au+ZlRGfbmXbChgeo+cwn0CaXSqKXkU8Gaqehif6JCkglWH5hDiZncSC4Yl3erNEnuGJThR+37CbauYe17rRiMypgak9oaXWsqz40dUvlEYDr7eGVN1zEd3xJmapKsCkneN5ciDzy/XDpb95eSShV11Ur69JSqY+zBySuvDZiV54y675dgIzVc7pot0+CT4wRVlYcKsBK28o4hKlRFWlsCsgmDtTpPBk4kveKFHihZN2b5iqdLC8sZ9pU/syVsXG2AswTeZbKdNlm/a6p6UfNqs/lJ+SfvafC7dN09hLv7AN+y/nwG7o5M7n/jPaP7cL2bDJ5Ecc+ME1W4YpjFwJxJSEkbsXxclgXOaFmWgsWYt+yJtZnHmzW1Eefwb2rWZ+jxQHyCwqxXMaAUUcCmWn2JhwFTEo+N8T44xqgMg2ZwUJ1EwedhUbbtRVzd2Vtb6Mdp963wMWL141CSGS/60HPTynAYcLFQ1cBHZDXQEeNHRtswtHNKdwJZRv78BqNQk03Jet8mAPD4kiRl54FvW3ut0UZdzEpC5uT2J8R1WeD5VqausuG+2MCtDuoNR7Ejk8leXmSMySiJLp/RSh5ZnQvZ8MNZlUpM=
