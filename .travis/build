@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ "$TRAVIS_BRANCH" = 'master' ] || [ "$TRAVIS_BRANCH" = 'devel' ]; then
+	mvn -P release install
+else
+	mvn install
+fi
