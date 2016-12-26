@@ -53,6 +53,8 @@ public class DatesTest {
 
     @Test
     public void testGetSecondsFromMillis() {
+        fail("Test travis fail");
+        
         long millis = 1000;
         long seconds = Dates.getSecondsFromMillis(millis);
         long expected = 1;
