@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>es.blackleg.java</groupId>
-    <artifactId>utilities</artifactId>
-    <version>3.1.7-modules-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <artifactId>parent</artifactId>
+    <version>3.2.0-modules-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>${project.groupId}.${project.artifactId}</name>
-    <description>Blackleg's utilities package</description>
+    <description>Blackleg's parent package</description>
     <url>www.blackleg.es</url>
     <developers>
         <developer>
@@ -25,8 +25,6 @@
     </licenses>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
     </properties>
     <profiles>
         <profile>
@@ -129,22 +127,7 @@
             </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>es.blackleg.java</groupId>
-            <artifactId>exceptions</artifactId>
-            <version>1.4.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.5</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>utilities</module>
+    </modules>
 </project>
