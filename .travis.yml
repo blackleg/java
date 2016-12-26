@@ -5,7 +5,7 @@ install:
   - mvn clean
   - mvn validate
 before_script:
-  - ".travi/before-script.sh."
+  - ".travis/before-script.sh."
 script:
 - ".travis/build.sh"
 env:
