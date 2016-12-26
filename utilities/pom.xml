@@ -4,7 +4,7 @@
     <parent>
         <groupId>es.blackleg.java</groupId>
         <artifactId>parent</artifactId>
-        <version>3.2.0</version>
+        <version>3.2.1-SNAPSHOT</version>
     </parent>
     <artifactId>utilities</artifactId>
     <packaging>jar</packaging>
