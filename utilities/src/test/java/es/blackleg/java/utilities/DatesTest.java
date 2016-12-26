@@ -53,6 +53,7 @@ public class DatesTest {
 
     @Test
     public void testGetSecondsFromMillis() {
+        
         long millis = 1000;
         long seconds = Dates.getSecondsFromMillis(millis);
         long expected = 1;
