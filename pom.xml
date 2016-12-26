@@ -129,5 +129,6 @@
     </build>
     <modules>
         <module>utilities</module>
+        <module>exceptions</module>
     </modules>
 </project>
