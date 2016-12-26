@@ -7,3 +7,11 @@ else
 	return 1;
 fi
 }
+
+function isDevelBranch {
+	if  [ "$TRAVIS_BRANCH" = 'devel' ]; then
+		return 0;
+	else
+		return 1;
+	fi
+}

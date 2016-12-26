@@ -7,4 +7,6 @@ install:
 before_script:
   - ".travis/before-script.sh"
 script:
-- ".travis/build.sh"
+  - ".travis/build.sh"
+after_success:
+  - ".travis/deploy.sh"
