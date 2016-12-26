@@ -453,6 +453,12 @@ public class Dates extends DateUtils {
         return DateUtils.addDays(date, days);
     }
     
+    /**
+     * Remove days
+     * @param date
+     * @param days
+     * @return Date
+     */
     public static Date removeDays(Date date, int days) {
         return addDays(date, Numbers.toMinus(days));
     }
