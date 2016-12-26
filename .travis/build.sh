@@ -2,7 +2,7 @@
 
 source .travis/utils.sh
 
-if isDeployable; then
+if isSignable; then
 	mvn -P release --settings .travis/settings.xml install
 else
 	mvn install

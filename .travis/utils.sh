@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
-function isDeployable {
-	if [ "$TRAVIS_PULL_REQUEST" == "false" ] && ( [ "$TRAVIS_BRANCH" = 'master' ] || [ "$TRAVIS_BRANCH" = 'devel' ] || [ ! -z "$TRAVIS_TAG" ] ); then
-	return 0;
-else
-	return 1;
-fi
+function notPullRequest {
+	if  [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+		return 0;
+	else
+		return 1;
+	fi
+}
+
+function isMasterBranch {
+	if  [ "$TRAVIS_BRANCH" = 'master' ]; then
+		return 0;
+	else
+		return 1;
+	fi
 }
 
 function isDevelBranch {
@@ -17,13 +25,26 @@ function isDevelBranch {
 }
 
 function isTagRelease {
-	echo "##### Test Tag Release ####"
-	echo $TRAVIS_BRANCH;
-	echo $TRAVIS_TAG;
-	#if  [ "$TRAVIS_BRANCH" = 'master' ] && ; then
-	#	return 0;
-	#else
-	#	return 1;
-	#fi
-	return 1;
+	if  [ ! -z "$TRAVIS_TAG" ]; then
+		return 0;
+	else
+		return 1;
+	fi
 }
+
+function isSignable {
+	if notPullRequest && ( isMasterBranch || isDevelBranch || isTagRelease ); then
+		return 0;
+	else
+		return 1;
+	fi
+}
+
+function isDeployable {
+	if isSignable && ( isDevelBranch || isTagRelease ); then
+		return 0;
+	else
+		return 1;
+	fi
+}
+
