@@ -25,7 +25,7 @@ function isDevelBranch {
 }
 
 function isTagRelease {
-	if  [ ! -z "$TRAVIS_TAG" ] && ; then
+	if  [ ! -z "$TRAVIS_TAG" ]; then
 		return 0;
 	else
 		return 1;
