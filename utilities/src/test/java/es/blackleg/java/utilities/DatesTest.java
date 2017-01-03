@@ -870,5 +870,22 @@ public class DatesTest {
         assertNotNull(addedDate);
         assertEquals(date, addedDate);
     }
+    
+    
+    @Test
+    public void testGetSecondsInHalfInterval() throws ParseException {
+        Date fromDate = Dates.now();
+        long secondsResult = 300;
+        Date untilDate = Dates.addSeconds(fromDate, 600);
+        long secondsInterval = Dates.getSecondsInHalfInterval(fromDate, untilDate);
+        assertEquals(secondsResult, secondsInterval);
+        
+        fromDate = Dates.now();
+        untilDate = Dates.addSeconds(fromDate, 3600);
+        secondsInterval = Dates.getSecondsInHalfInterval(fromDate, untilDate);
+        secondsResult = 1800;
+        assertEquals(secondsResult, secondsInterval);
+        
+    }
 
 }
