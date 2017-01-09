@@ -15,11 +15,13 @@
  */
 package es.blackleg.java.utilities;
 
+import org.apache.commons.lang3.ObjectUtils;
+
 /**
  *
  * @author hector
  */
-public class Objects {
+public class Objects extends ObjectUtils {
     
     public static boolean nonNull(Object object) {
         return !isNull(object);

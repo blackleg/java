@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.time.DateUtils;
 
 /**
@@ -45,9 +46,11 @@ public class Dates extends DateUtils {
 
     public static final int DAYS_IN_MONTH = 30;
     
-    public static final long FIVE_MIN_IN_MILLIS = 300000;
-    public static final long THIRTY_MIN_IN_MILLIS = 1800000;
-    public static final long THIRTY_MIN_IN_SECONDS = 1800;
+    public static final int FIVE_MIN_IN_MILLIS = 300000;
+    public static final int THIRTY_MIN_IN_MILLIS = 1800000;
+    public static final int THIRTY_MIN_IN_SECONDS = 1800;
+    
+    public static final int THIRTY_DAYS_IN_SECONDS = 2592000;
 
     public static Date fromStringWithFormat(String format, String stringFecha) throws ParseException {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat(format);
@@ -137,8 +140,22 @@ public class Dates extends DateUtils {
     }
 
     public static boolean checkTwoDatesIfNotNull(Date fromDate, Date untilDate) {
-        return Objects.nonNull(fromDate) && Objects.nonNull(untilDate);
+        return allNotNull(fromDate, untilDate);
     }
+    
+    /**
+     * All dates not null
+     * @param dates
+     * @return True if all dates not null
+     */
+    public static boolean allNotNull(Date... dates) {
+        return ObjectUtils.allNotNull((Object[]) dates);
+    }
+    
+    public static boolean anyNull(Date... dates) {
+        return !allNotNull(dates);
+    }
+    
 
     /**
      * Get seconds from milliseconds
