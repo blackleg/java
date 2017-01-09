@@ -887,5 +887,44 @@ public class DatesTest {
         assertEquals(secondsResult, secondsInterval);
         
     }
+    
+    @Test
+    public void testCheckTwoDatesIfNotNull() {
+        Date date = null;
+        Date otherDate = null;
+        assertFalse(Dates.checkTwoDatesIfNotNull(date, otherDate));
+        date = Dates.now();
+        assertFalse(Dates.checkTwoDatesIfNotNull(date, otherDate));
+        otherDate = Dates.now();
+        assertTrue(Dates.checkTwoDatesIfNotNull(date, otherDate));
+    }
+    
+    @Test
+    public void testAllNotNull() {
+        Date oneDate = Dates.now();
+        Date date = null;
+        Date otherDate = null;
+        assertFalse(Dates.allNotNull(oneDate, date, otherDate));
+        date = Dates.now();
+        assertFalse(Dates.allNotNull(oneDate, date, otherDate));
+        otherDate = Dates.now();
+        assertTrue(Dates.allNotNull(oneDate, date, otherDate));
+    }
+    
+    
+    @Test
+    public void testAnyNull() {
+        Date oneDate = null;
+        Date date = null;
+        Date otherDate = null;
+        assertTrue(Dates.anyNull(oneDate, date, otherDate));
+                
+        oneDate = Dates.now();
+        date = Dates.now();
+        assertTrue(Dates.anyNull(oneDate, date, otherDate));
+        
+        otherDate = Dates.now();
+        assertFalse(Dates.anyNull(oneDate, date, otherDate));
+    }
 
 }

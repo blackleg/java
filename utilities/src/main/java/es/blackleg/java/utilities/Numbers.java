@@ -66,6 +66,8 @@ public class Numbers {
     public static final int THIRTY = 30;
     public static final int THIRTY_ONE = 31;
     
+    public static final int SIXTY = 60;
+    
     public static final int ONE_HUNDRED = 100;
     public static final double ONE_HUNDRED_DOUBLE = 100.0;
     public static final int ONETHOUSAND = 1000;
